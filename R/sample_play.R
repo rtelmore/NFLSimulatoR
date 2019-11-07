@@ -1,13 +1,38 @@
+#' Sample NFL Play-by-Play Data
+#'
+#' This function will return a sample play from the nflscrapR play-by-play
+#' data for a given down, distance, yards from the team's goal, and a
+#' particular strategy.
+#'
+#'
+#' @param what_down 1st, 2nd, 3rd, or 4th down
+#' @param yards_to_go How many yards to go until a first down or TD
+#' @param yards_from_own_goal The number of yards from the possession team's own goal
+#' @param play_by_play_data A data file from nflscrapR
+#' @param situation A character string denoting the usual strategy ("normal") or always go for it in fourth down ("go for it fourth")
+#'
+#' @return A tibble containing lots of info
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' sample_play(what_down = 3,
+#'             yards_to_go = 2,
+#'             yards_from_own_goal = 45,
+#'             play_by_play_data = reg_pbp_2018,
+#'             situation = "normal")
+#' }
 sample_play <- function(what_down,
                         yards_to_go,
                         yards_from_own_goal,
-                        play_by_play_data = pbp_data,
-                        situation = "go_for_it_fourth"){
+                        play_by_play_data,
+                        situation = "go for it fourth"){
   down_original <- what_down
   if (yards_from_own_goal <= 5){yards_from_own_goal <- 5}
   if (yards_from_own_goal > 90){yards_to_go = 100 - yards_from_own_goal}
   if (yards_to_go >= 20){yards_to_go <- 20}
-  if(situation == "go_for_it_fourth"){
+  if(situation == "go for it fourth"){
     if(what_down != 1){
       tmp <- dplyr::filter(play_by_play_data,
                            !is.na(yfog),
