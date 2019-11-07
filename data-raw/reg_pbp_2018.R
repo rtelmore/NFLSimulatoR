@@ -4,8 +4,7 @@ if (!file.exists("data-raw/reg_pbp_2018.csv")) {
     "data-raw/reg_pbp_2018.csv")
 }
 
-raw <- read.csv("data-raw/reg_pbp_2018.csv",
-                stringsAsFactors = FALSE)
+reg_pbp_2018 <- read.csv("data-raw/reg_pbp_2018.csv", stringsAsFactors = FALSE)
 
-write.csv(raw, "data-raw/reg_pbp_2018.csv")
-save(raw, file = "data/reg_pbp_2018.rda", version = 3)
+write.csv(reg_pbp_2018, "data-raw/reg_pbp_2018.csv")
+save(reg_pbp_2018, file = "data/reg_pbp_2018.rda", compress = "xz", version = 3)
