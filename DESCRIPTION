@@ -1,0 +1,17 @@
+Package: nflsimulator
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Authors@R: c(
+    person("Ryan", "Elmore", email = "rtelmore@gmail.com", role = c("cre", "aut")),
+    person("Ben", "Williams", email = "update@gmail.com", role = "aut"))
+Maintainer: Ryan Elmore <rtelmore@gmail.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports:
+    dplyr,
+    magrittr
+LazyData: true
+RoxygenNote: 6.1.1
