@@ -1,10 +1,9 @@
-#' NFL Play-by-Play Data
+#' NFL Play-by-Play Data 2018
 #'
-#' A dataset containing the 256 attributes associated with 452661 plays in the
-#' NFL from 2009 regular season through the 2018 regular season. The data were
-#' obtained using the nflscrapR package.
+#' A dataset containing the 256 attributes associated with 45143 plays in the
+#' NFL from the 2018 regular season. The data were obtained using the nflscrapR package.
 #'
-#' @format A data frame with 452661 rows and 256 variables:
+#' @format A data frame with 45143 rows and 256 variables:
 #' \describe{
 #'   \item{play_id}{id within a game}
 #'   \item{game_id}{id of the specific game}
@@ -14,4 +13,4 @@
 #'   ...
 #' }
 #' @source \url{https://ryurko.github.io/nflscrapR-data/}
-"nfl-pbp-df"
+"reg_pbp_2018"
