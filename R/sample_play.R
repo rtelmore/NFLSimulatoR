@@ -134,23 +134,23 @@ sample_play <- function(what_down,
   else(points <- 0)
   #if(!is.td.offense & !is.field_goal){points <- 0}
   return(
-    tibble(
-      down_original = down_original,
-      yards_to_go = yards_to_go,
-      yard_line = yard_line,
-      yards_gained = yards_gained,
-      new_down = new_down,
-      new_distance = new_distance,
-      is.turnover = is.turnover,
-      is.td.offense = is.td.offense,
-      is.field_goal = is.field_goal,
-      end_drive = end_drive,
-      new_yfog = new_yfog,
-      turnover_on_downs = turnover_on_downs,
-      play = play,
-      kick_dist = kick_dist,
-      points = points,
-      new_yard_line = new_yard_line
+    dplyr::tibble(
+                  down_original = down_original,
+                  yards_to_go = yards_to_go,
+                  yard_line = yard_line,
+                  yards_gained = yards_gained,
+                  new_down = new_down,
+                  new_distance = new_distance,
+                  is.turnover = is.turnover,
+                  is.td.offense = is.td.offense,
+                  is.field_goal = is.field_goal,
+                  end_drive = end_drive,
+                  new_yfog = new_yfog,
+                  turnover_on_downs = turnover_on_downs,
+                  play = play,
+                  kick_dist = kick_dist,
+                  points = points,
+                  new_yard_line = new_yard_line
     )
   )
 }
