@@ -26,7 +26,10 @@ sample_play <- function(what_down,
                         play_by_play_data){
 
   play <- play_by_play_data[!is.na(yfog) &
-                              !play_type %in% c("NA", "no_play", "qb_kneel", "qb_spike") &
+                              !play_type %in% c("NA",
+                                                "no_play",
+                                                "qb_kneel",
+                                                "qb_spike") &
                               down == what_down &
                               ydstogo == yards_to_go &
                               yfog == yards_from_own_goal][
@@ -36,7 +39,10 @@ sample_play <- function(what_down,
     yards_to_go = yards_to_go - 1
   }
   play <- play_by_play_data[!is.na(yfog) &
-                              !play_type %in% c("NA", "no_play", "qb_kneel", "qb_spike") &
+                              !play_type %in% c("NA",
+                                                "no_play",
+                                                "qb_kneel",
+                                                "qb_spike") &
                               down == what_down &
                               ydstogo == yards_to_go &
                               yfog == yards_from_own_goal][
