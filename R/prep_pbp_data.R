@@ -10,7 +10,7 @@
 #' dt <- prep_pbp_data(nflscrapr_pbp_data)
 #' }
 prep_pbp_data <- function(nflscrapR_data){
-  dt <- data.table::as.data.table(nflscrapR_data)
+  dt <- data.table::setDT(nflscrapR_data)
   dt[, ":="
      (p_diff = total_home_score - total_away_score,
        is_two_point = grepl("TWO-POINT CONVERSION", desc),
@@ -22,8 +22,5 @@ prep_pbp_data <- function(nflscrapR_data){
        punt_attempt = as.numeric(punt_attempt))][, ":="
      (is_turnover = grepl("INTERCEPTED", desc) |
          (is_fumble & fumble_recovery_1_team != posteam))]
-  return(dt[!is.na(yards_gained) &
-              !is_two_point &
-              !is.na(punt_attempt)])
+  return(dt[!is.na(yards_gained) & !is_two_point & !is.na(punt_attempt)])
 }
-
