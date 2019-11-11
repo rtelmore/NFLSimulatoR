@@ -1,10 +1,10 @@
-sample_drives_until_score <- function(n_drives,
+sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
                                       FUN1 = sample_play,
                                       FUN2 = sample_play_go_for_it){
   all_drives <- NULL
-  for (i in 1:n_drives) {
+  for (i in 1:n_sims) {
     current_drive <- NULL
     new_yfog <- from_yard_line
     new_down <- 1
