@@ -1,3 +1,20 @@
+#' Sample a Series of Drives Until a Score
+#'
+#' @param n_sims The number of simulations
+#' @param from_yard_line The starting field position (defaults to 25)
+#' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
+#' @param STRATEGY1 one of sample_play or sample_play_go_for_it
+#' @param STRATEGY2 one of sample_play or sample_play_go_for_it
+#'
+#' @return
+#' @export
+#'
+#' \dontrun{
+#' sample_drives_until_score(2, 25, dt,
+#'                           STRATEGY1 = sample_play,
+#'                           STRATEGY2 = sample_play_go_for_it)
+#' }
+#'
 sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
