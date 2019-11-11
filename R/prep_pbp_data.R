@@ -19,8 +19,8 @@ prep_pbp_data <- function(nflscrapR_data){
        is_field_goal = field_goal_attempt & (field_goal_result == "made"),
        yfog = 100 - yardline_100,
        touchback = ifelse(grepl("Touchback", desc), 1, 0),
-       punt_attempt = as.numeric(punt_attempt))][, ":="
-     (is_turnover = grepl("INTERCEPTED", desc) |
+       punt_attempt = as.numeric(punt_attempt))][
+         , ":=" (is_turnover = grepl("INTERCEPTED", desc) |
          (is_fumble & fumble_recovery_1_team != posteam))]
   return(dt[!is.na(yards_gained) & !is_two_point & !is.na(punt_attempt)])
 }

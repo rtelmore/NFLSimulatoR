@@ -7,7 +7,7 @@
 #' @param what_down 1st, 2nd, 3rd, or 4th down
 #' @param yards_to_go How many yards to go until a first down or TD
 #' @param yards_from_own_goal The number of yards from the possession team's own goal
-#' @param play_by_play_data A data file from nflscrapR
+#' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #'
 #' @return A tibble containing lots of info
 #'
@@ -32,8 +32,8 @@ sample_play <- function(what_down,
                                                 "qb_spike") &
                               down == what_down &
                               ydstogo == yards_to_go &
-                              yfog == yards_from_own_goal][
-                                sample(1:.N, size = 1)]
+                              yfog == yards_from_own_goal, ][
+                                sample(1:(.N), size = 1), ]
 
   if(nrow(play) == 0){
     yards_to_go = yards_to_go - 1
@@ -45,7 +45,7 @@ sample_play <- function(what_down,
                                                 "qb_spike") &
                               down == what_down &
                               ydstogo == yards_to_go &
-                              yfog == yards_from_own_goal][
-                                sample(1:.N, size = 1)]
+                              yfog == yards_from_own_goal, ][
+                                sample(1:.N, size = 1), ]
   return(play)
 }
