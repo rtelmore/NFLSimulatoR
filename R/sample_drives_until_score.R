@@ -6,9 +6,10 @@
 #' @param STRATEGY1 one of sample_play or sample_play_go_for_it
 #' @param STRATEGY2 one of sample_play or sample_play_go_for_it
 #'
-#' @return
-#' @export
+#' @return A data.frame of drives
 #'
+#' @export
+#' @examples
 #' \dontrun{
 #' sample_drives_until_score(2, 25, dt,
 #'                           STRATEGY1 = sample_play,
