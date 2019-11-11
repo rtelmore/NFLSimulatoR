@@ -30,7 +30,10 @@ down_distance_updater <- function(what_down,
   play <- FUN(what_down,
               yards_to_go,
               yards_from_own_goal,
-              pbp_data)
+              play_by_play_data)
+
+  yard_line <- play$yardline_100
+  yards_gained <- play$yards_gained
 
   if(identical(numeric(0), play$punt_attempt)){
     play$punt_attempt <- 0
@@ -54,7 +57,7 @@ down_distance_updater <- function(what_down,
                          ifelse(yards_gained >= yards_to_go & new_yfog > 90,
                                 100 - new_yfog,
                                 yards_to_go - yards_gained))
-  desc <- play$desc
+  # desc <- play$desc
   new_yard_line <- yard_line - yards_gained
   new_down <- ifelse(yards_gained >= yards_to_go,
                      1,
@@ -83,7 +86,7 @@ down_distance_updater <- function(what_down,
       end_drive = end_drive,
       new_yfog = new_yfog,
       turnover_on_downs = turnover_on_downs,
-      play = as.character(desc),
+      play = as.character(play$desc),
       kick_dist = play$kick_distance,
       points = points,
       new_yard_line = new_yard_line,
