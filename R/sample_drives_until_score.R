@@ -1,8 +1,8 @@
 sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
-                                      FUN1 = sample_play,
-                                      FUN2 = sample_play_go_for_it){
+                                      STRATEGY1 = sample_play,
+                                      STRATEGY2 = sample_play_go_for_it){
   all_drives <- NULL
   for (i in 1:n_sims) {
     current_drive <- NULL
@@ -27,13 +27,13 @@ sample_drives_until_score <- function(n_sims,
                                       new_distance,
                                       new_yfog,
                                       play_by_play_data,
-                                      FUN = FUN1)
+                                      FUN = STRATEGY1)
       } else {
         play <- down_distance_updater(new_down,
                                       new_distance,
                                       new_yfog,
                                       play_by_play_data,
-                                      FUN = FUN2)
+                                      FUN = STRATEGY2)
       }
       play$drive_counter <- drive_counter
       play$play_num <- play_num
