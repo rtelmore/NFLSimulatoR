@@ -1,7 +1,27 @@
+#' The down and distance updater will run a play and update various game-based
+#' statistics accordingly.
+#'
+#' @param what_down The current down (1st, 2nd, 3rd, or 4th down)
+#' @param yards_to_go Number of yards to go until a first down or TD
+#' @param yards_from_own_goal The number of yards from the possession team's own goal
+#' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function#
+#' @param FUN sample_play or sample_play_go_for_it
+#'
+#' @return A data.frame object
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' down_distance_updater(what_down = 3,
+#'                       yards_to_go = 2,
+#'                       yards_from_own_goal = 45,
+#'                       play_by_play_data = pbp_data,
+#'                       FUN = sample_play_go_for_it)
+#' }
 down_distance_updater <- function(what_down,
                                   yards_to_go,
                                   yards_from_own_goal,
-                                  pbp_data,
+                                  play_by_play_data,
                                   FUN = sample_play){
   # down_original <- what_down
   if (yards_from_own_goal <= 5){yards_from_own_goal <- 5}
@@ -11,11 +31,6 @@ down_distance_updater <- function(what_down,
               yards_to_go,
               yards_from_own_goal,
               pbp_data)
-
-  yards_to_go <- play$ydstogo
-  yard_line <- play$yardline_100
-  yards_gained <- play$yards_gained
-  yards_from_own_goal <- play$yfog
 
   if(identical(numeric(0), play$punt_attempt)){
     play$punt_attempt <- 0
@@ -39,25 +54,20 @@ down_distance_updater <- function(what_down,
                          ifelse(yards_gained >= yards_to_go & new_yfog > 90,
                                 100 - new_yfog,
                                 yards_to_go - yards_gained))
-  # is_turnover <- play$is_turnover
-  # is_td_offense <- play$is.td.offense
-  # is.field_goal <- play$is.field.goal
-  play <- play$desc
+  desc <- play$desc
   new_yard_line <- yard_line - yards_gained
   new_down <- ifelse(yards_gained >= yards_to_go,
                      1,
-                     down_original + 1)
+                     what_down + 1)
   end_drive <- {new_down > 4 | play$is_turnover | play$is_td_offense |
       play$is_field_goal}
-  turnover_on_downs <- {down_original == 4 & new_down > 4 &
+  turnover_on_downs <- {what_down == 4 & new_down > 4 &
       !play$is_turnover & !play$is_td_offense}
-  # kick_dist <- play$kick_distance
   if(play$is_td_offense == 1){
     points <- 7 #think about 7
   } else if(play$is_field_goal == 1){
     points <- 3
-  }
-  else {points <- 0}
+  } else {points <- 0}
   #if(!is.td.offense & !is.field_goal){points <- 0}
   return(
     data.frame(
@@ -67,16 +77,18 @@ down_distance_updater <- function(what_down,
       yards_gained = yards_gained,
       new_down = new_down,
       new_distance = new_distance,
-      is_turnover = is_turnover,
-      is_td_offense = is_td_offense,
-      is_field_goal = is_field_goal,
+      is_turnover = play$is_turnover,
+      is_td_offense = play$is_td_offense,
+      is_field_goal = play$is_field_goal,
       end_drive = end_drive,
       new_yfog = new_yfog,
       turnover_on_downs = turnover_on_downs,
-      play = play,
-      kick_dist = kick_dist,
+      play = as.character(desc),
+      kick_dist = play$kick_distance,
       points = points,
-      new_yard_line = new_yard_line
+      new_yard_line = new_yard_line,
+      stringsAsFactors = FALSE
     )
   )
 }
+

@@ -8,13 +8,13 @@ sample_play_go_for_it(what_down, yards_to_go, yards_from_own_goal,
   play_by_play_data)
 }
 \arguments{
-\item{what_down}{1st, 2nd, 3rd, or 4th down}
+\item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}
 
-\item{yards_to_go}{How many yards to go until a first down or TD}
+\item{yards_to_go}{Number of yards to go until a first down or TD}
 
 \item{yards_from_own_goal}{The number of yards from the possession team's own goal}
 
-\item{play_by_play_data}{A data file from nflscrapR}
+\item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function#}
 }
 \value{
 A tibble containing lots of info
