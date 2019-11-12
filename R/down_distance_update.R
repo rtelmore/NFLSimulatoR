@@ -27,19 +27,27 @@ down_distance_updater <- function(what_down,
   if (yards_from_own_goal <= 5){yards_from_own_goal <- 5}
   if (yards_from_own_goal > 90){yards_to_go = 100 - yards_from_own_goal}
   if (yards_to_go >= 20){yards_to_go <- 20}
-  play <- FUN(what_down,
-              yards_to_go,
-              yards_from_own_goal,
-              play_by_play_data)
+
+  play_success <- FALSE
+  while(play_success == FALSE){
+    play <- FUN(what_down,
+                yards_to_go,
+                yards_from_own_goal,
+                play_by_play_data)
+    if(any(is.na(play$desc), identical(play$desc, character(0)))){
+      play_success <- FALSE
+      yards_from_own_goal <- yards_from_own_goal + 1
+    } else play_success <- TRUE
+  }
 
   yard_line <- play$yardline_100
   yards_gained <- play$yards_gained
 
-  if(identical(numeric(0), play$punt_attempt)){
-    play$punt_attempt <- 0
-  }
+  # if(identical(character(0), play$punt_attempt)){
+  #   play$punt_attempt <- as.numeric(0)
+  # }
 
-  if(play$punt_attempt==1){
+  if(play$punt_attempt == 1){
     if(play$punt_blocked == 1){
       new_yfog <- yards_from_own_goal
     } else if(!is.na(play$touchback) & (play$touchback != 0)){
