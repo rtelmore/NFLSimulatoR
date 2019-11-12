@@ -10,7 +10,7 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends:
+Imports:
     data.table
 LazyData: true
 RoxygenNote: 6.1.1
