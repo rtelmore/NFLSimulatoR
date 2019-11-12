@@ -11,6 +11,8 @@
 #'
 #' @return A tibble containing lots of info
 #'
+#' @import data.table
+#'
 #' @export
 #'
 #' @examples

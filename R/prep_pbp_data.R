@@ -3,6 +3,7 @@
 #' @param nflscrapR_data An nflscrapR data set. Note that stringsAsFactors = FALSE is assumed.
 #'
 #' @return a data.table object
+#' @import data.table
 #' @export
 #'
 #' @examples
