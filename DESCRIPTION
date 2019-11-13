@@ -4,7 +4,7 @@ Title: Simulating NFL Drives using NFLScrapR Data
 Version: 0.1.0
 Authors@R: c(
     person("Ryan", "Elmore", email = "Ryan.Elmore@du.edu", role = c("cre", "aut")),
-    person("Ben", "Williams", email = "update@du.edu", role = "aut"))
+    person("Ben", "Williams", email = "Benjamin.Williams@du.edu", role = "aut"))
 Maintainer: Ryan Elmore <rtelmore@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
