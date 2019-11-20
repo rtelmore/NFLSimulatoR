@@ -34,12 +34,12 @@ sample_drives_until_score <- function(n_sims,
     turnover_on_downs <- FALSE
     is_turnover <- FALSE
     drive_counter <- 1
+    # cat(sprintf(" Simulation %s of %s -- %s\n",
+    #             i, n_sims, Sys.time()))
     while (!is_td_offense & !is_field_goal) {
       if(new_distance > 100 - new_yfog){
         new_distance <- 100 - new_yfog
       }
-      cat(sprintf("Current Sim, Drive, Down: %s %s %s\n",
-                  i, drive_counter, new_down))
       if((drive_counter %% 2) == 1){
         play <- down_distance_updater(new_down,
                                       new_distance,
