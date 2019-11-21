@@ -3,6 +3,7 @@
 export(down_distance_updater)
 export(prep_pbp_data)
 export(sample_drives_until_score)
+export(sample_pass_play)
 export(sample_play)
 export(sample_play_go_for_it)
 import(data.table)
