@@ -20,9 +20,18 @@ sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
                                       STRATEGY1 = sample_play,
-                                      STRATEGY2 = sample_play_go_for_it){
+                                      STRATEGY2 = sample_play_go_for_it,
+                                      progress = TRUE){
+  if(progress == TRUE){
+    pb <- progress_bar$new(
+      format = "  Simulations [:bar] :percent eta: :eta",
+      total = n_sims, clear = FALSE, width = 60)
+  }
   all_drives <- NULL
   for (i in 1:n_sims) {
+    if(progress == TRUE){
+      pb$tick()
+    }
     current_drive <- NULL
     new_yfog <- from_yard_line
     new_down <- 1

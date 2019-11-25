@@ -11,6 +11,7 @@ Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
-    data.table
+    data.table,
+    progress
 LazyData: true
 RoxygenNote: 6.1.1
