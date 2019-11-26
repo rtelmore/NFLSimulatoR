@@ -5,7 +5,8 @@
 \title{Sample a Series of Drives Until a Score}
 \usage{
 sample_drives_until_score(n_sims, from_yard_line = 25, play_by_play_data,
-  STRATEGY1 = sample_play, STRATEGY2 = sample_play_go_for_it)
+  STRATEGY1 = sample_play, STRATEGY2 = sample_play_go_for_it,
+  progress = TRUE)
 }
 \arguments{
 \item{n_sims}{The number of simulations}
