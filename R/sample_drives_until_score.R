@@ -23,16 +23,16 @@ sample_drives_until_score <- function(n_sims,
                                       STRATEGY1 = sample_play,
                                       STRATEGY2 = sample_play_go_for_it,
                                       progress = TRUE){
-  if(progress == TRUE){
-    pb <- progress_bar$new(
-      format = "  Simulations [:bar] :percent eta: :eta",
-      total = n_sims, clear = FALSE, width = 60)
-  }
+  # if(progress == TRUE){
+  #   pb <- progress_bar$new(
+  #     format = "  Simulations [:bar] :percent eta: :eta",
+  #     total = n_sims, clear = FALSE, width = 60)
+  # }
   all_drives <- NULL
   for (i in 1:n_sims) {
-    if(progress == TRUE){
-      pb$tick()
-    }
+    # if(progress == TRUE){
+    #   pb$tick()
+    # }
     current_drive <- NULL
     new_yfog <- from_yard_line
     new_down <- 1
@@ -44,8 +44,10 @@ sample_drives_until_score <- function(n_sims,
     turnover_on_downs <- FALSE
     is_turnover <- FALSE
     drive_counter <- 1
-    # cat(sprintf(" Simulation %s of %s -- %s\n",
-    #             i, n_sims, Sys.time()))
+    if(i %% 20 == 0){
+      cat(sprintf(" Simulation %s of %s at %s\n",
+                  i, n_sims, Sys.time()))
+    }
     while (!is_td_offense & !is_field_goal) {
       if(new_distance > 100 - new_yfog){
         new_distance <- 100 - new_yfog
@@ -73,7 +75,7 @@ sample_drives_until_score <- function(n_sims,
       play_num <- play_num + 1
       is_td_offense <- play$is_td_offense
       is_field_goal <- play$is_field_goal
-      if(end_of_drive){
+      if(end_of_drive | play$safety == 1){
         new_down <- 1
         new_distance <- 10
         new_yfog <- 100 - new_yfog

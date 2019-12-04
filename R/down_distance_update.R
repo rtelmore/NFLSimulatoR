@@ -94,6 +94,7 @@ down_distance_updater <- function(what_down,
       kick_dist = play$kick_distance,
       points = points,
       new_yard_line = new_yard_line,
+      safety = play$safety,
       stringsAsFactors = FALSE
     )
   )
