@@ -2,7 +2,7 @@
 #' 
 #' This function will return a sample play from the nflscrapR play-by-play
 #' data for a given down, distance, yards from the team's goal, using the 
-#' strategy of awlays passing the ball (instead of running, so the team can still kick 
+#' strategy of awlays running the ball (instead of passing, so the team can still kick 
 #' field goals and punts)
 #' 
 #' @param what_down The current down (1st, 2nd, 3rd, or 4th down)
@@ -17,17 +17,17 @@
 #' @export
 #'
 
-sample_pass_play <- function(what_down,
-                        yards_to_go,
-                        yards_from_own_goal,
-                        play_by_play_data){
+sample_run_play <- function(what_down,
+                             yards_to_go,
+                             yards_from_own_goal,
+                             play_by_play_data){
   
   play <- play_by_play_data[!is.na(yfog) &
                               !play_type %in% c("NA",
                                                 "no_play",
                                                 "qb_kneel",
                                                 "qb_spike",
-                                                "run") &
+                                                "pass") &
                               down == what_down &
                               ydstogo == yards_to_go &
                               yfog == yards_from_own_goal, ][
@@ -41,7 +41,7 @@ sample_pass_play <- function(what_down,
                                                 "no_play",
                                                 "qb_kneel",
                                                 "qb_spike",
-                                                "run") &
+                                                "pass") &
                               down == what_down &
                               ydstogo == yards_to_go &
                               yfog == yards_from_own_goal, ][

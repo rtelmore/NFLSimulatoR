@@ -76,7 +76,7 @@ sample_drives_until_score <- function(n_sims,
       if(end_of_drive){
         new_down <- 1
         new_distance <- 10
-        new_yfog <- 100 - from_yard_line
+        new_yfog <- 100 - new_yfog
         end_of_drive <- FALSE
         play_num <- 1
         drive_counter <- drive_counter + 1
