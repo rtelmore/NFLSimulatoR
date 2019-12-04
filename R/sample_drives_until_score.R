@@ -5,6 +5,7 @@
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #' @param STRATEGY1 one of sample_play or sample_play_go_for_it
 #' @param STRATEGY2 one of sample_play or sample_play_go_for_it
+#' @param progress logical for inclusion of a text-based progress bar
 #'
 #' @return A data.frame of drives
 #'
