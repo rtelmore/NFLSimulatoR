@@ -33,18 +33,18 @@ sample_pass_play <- function(what_down,
                               yfog == yards_from_own_goal, ][
                                 sample(1:(.N), size = 1), ]
   
-  if(nrow(play) == 0){
-    yards_to_go = yards_to_go - 1
-  }
-  play <- play_by_play_data[!is.na(yfog) &
-                              !play_type %in% c("NA",
-                                                "no_play",
-                                                "qb_kneel",
-                                                "qb_spike",
-                                                "run") &
-                              down == what_down &
-                              ydstogo == yards_to_go &
-                              yfog == yards_from_own_goal, ][
-                                sample(1:.N, size = 1), ]
+  # if(nrow(play) == 0){
+  #   yards_to_go = yards_to_go - 1
+  # }
+  # play <- play_by_play_data[!is.na(yfog) &
+  #                             !play_type %in% c("NA",
+  #                                               "no_play",
+  #                                               "qb_kneel",
+  #                                               "qb_spike",
+  #                                               "run") &
+  #                             down == what_down &
+  #                             ydstogo == yards_to_go &
+  #                             yfog == yards_from_own_goal, ][
+  #                               sample(1:.N, size = 1), ]
   return(play)
 }
