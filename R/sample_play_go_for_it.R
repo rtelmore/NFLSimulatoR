@@ -32,14 +32,14 @@ sample_play_go_for_it <- function(what_down,
                                 ydstogo == yards_to_go &
                                 yfog == yards_from_own_goal, ][
                                   sample(1:.N, size = 1), ]
+  }else{
+    play <- play_by_play_data[!is.na(yfog) &
+                                play_type %in% c("pass", "run") &
+                                down == what_down &
+                                ydstogo == yards_to_go &
+                                yfog == yards_from_own_goal, ][
+                                  sample(1:.N, size = 1), ]
   }
-  play <- play_by_play_data[!is.na(yfog) &
-                              play_type %in% c("pass", "run") &
-                              down == what_down &
-                              ydstogo == yards_to_go &
-                              yfog == yards_from_own_goal, ][
-                                sample(1:.N, size = 1), ]
-
   if(nrow(play) == 0 & what_down != 1){ #In case no plays exist
     play <- play_by_play_data[!is.na(yfog) &
                                 play_type %in% c("pass", "run") &

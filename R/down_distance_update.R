@@ -36,7 +36,8 @@ down_distance_updater <- function(what_down,
                 play_by_play_data)
     if(any(is.na(play$desc), identical(play$desc, character(0)))){
       play_success <- FALSE
-      yards_from_own_goal <- yards_from_own_goal + 1
+      #yards_from_own_goal <- yards_from_own_goal + 1
+      yards_from_own_goal <- min(99,yards_from_own_goal + sample(c(1,-1,2,-2),size = 1))
     } else play_success <- TRUE
   }
 
