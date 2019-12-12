@@ -24,7 +24,7 @@ sample_drives_until_score <- function(n_sims,
                                       STRATEGY2 = sample_play,
                                       progress = TRUE){
   if(progress == TRUE){
-    pb <- progress_bar$new(
+    pb <- progress::progress_bar$new(
       format = "  Simulations [:bar] :percent eta: :eta",
       total = n_sims, clear = FALSE, width = 60)
   }
