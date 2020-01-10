@@ -41,10 +41,11 @@ sample_drives_until_score <- function(n_sims,
     play_num <- 1
     is_td_offense <- FALSE
     is_field_goal <- FALSE
+    is_safety <- FALSE
     turnover_on_downs <- FALSE
     is_turnover <- FALSE
     drive_counter <- 1
-    while (!is_td_offense & !is_field_goal) {
+    while (!is_td_offense & !is_field_goal & !is_safety) {
       if(new_distance > 100 - new_yfog){
         new_distance <- 100 - new_yfog
       }
@@ -71,6 +72,7 @@ sample_drives_until_score <- function(n_sims,
       play_num <- play_num + 1
       is_td_offense <- play$is_td_offense
       is_field_goal <- play$is_field_goal
+      is_safety <- play$safety
       if(end_of_drive | play$safety == 1){
         new_down <- 1
         new_distance <- 10
