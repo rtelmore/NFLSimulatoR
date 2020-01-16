@@ -25,7 +25,7 @@ sample_play_go_for_it_under_5_yds <- function(what_down,
                                   yards_to_go,
                                   yards_from_own_goal,
                                   play_by_play_data){
-  if(what_down == 4 & yards_to_go >= 5){sample_play(what_down = what_down,
+  if(what_down == 4 & yards_to_go >= 5){play <- sample_play(what_down = what_down,
                                                     yards_to_go = yards_to_go,
                                                     yards_from_own_goal = yards_from_own_goal,
                                                     play_by_play_data = play_by_play_data)}
