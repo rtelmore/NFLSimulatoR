@@ -33,13 +33,10 @@ sample_play_test <- function(what_down,
                         yards_to_go,
                         yards_from_own_goal,
                         play_by_play_data,
-                        passes_and_rushes = T,
-                        just_passes = F,
-                        just_rushes = F){
-  # Sample both passes and rushes
-  if(passes_and_rushes == T & 
-     just_passes == F &
-     just_rushes == F){
+                        strategy = "normal",
+                        ...){
+  # Normal strategy
+  if(strategy == "normal"){
   play <- play_by_play_data[!is.na(yfog) &
                               !play_type %in% c("NA",
                                                 "no_play",
@@ -65,66 +62,5 @@ sample_play_test <- function(what_down,
   return(play)
   }
   
-  #Sample just passes
-  if(passes_and_rushes == F & 
-     just_passes == T &
-     just_rushes == F){
-    play <- play_by_play_data[!is.na(yfog) &
-                                !play_type %in% c("NA",
-                                                  "no_play",
-                                                  "qb_kneel",
-                                                  "qb_spike",
-                                                  "run") &
-                                down == what_down &
-                                ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal, ][
-                                  sample(1:(.N), size = 1), ]
-    
-    
-    if(nrow(play) == 0){
-      yards_to_go = yards_to_go - 1
-    }
-    play <- play_by_play_data[!is.na(yfog) &
-                                !play_type %in% c("NA",
-                                                  "no_play",
-                                                  "qb_kneel",
-                                                  "qb_spike",
-                                                  "run") &
-                                down == what_down &
-                                ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal, ][
-                                  sample(1:(.N), size = 1), ]
-    
-    return(play)
-  }
-  #Sample just rushes
-  if(passes_and_rushes == F & 
-     just_passes == F &
-     just_rushes == T){
-    play <- play_by_play_data[!is.na(yfog) &
-                                !play_type %in% c("NA",
-                                                  "no_play",
-                                                  "qb_kneel",
-                                                  "qb_spike",
-                                                  "pass") &
-                                down == what_down &
-                                ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal, ][
-                                  sample(1:(.N), size = 1), ]
-    
-    if(nrow(play) == 0){
-      yards_to_go = yards_to_go - 1
-    }
-    play <- play_by_play_data[!is.na(yfog) &
-                                !play_type %in% c("NA",
-                                                  "no_play",
-                                                  "qb_kneel",
-                                                  "qb_spike",
-                                                  "pass") &
-                                down == what_down &
-                                ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal, ][
-                                  sample(1:(.N), size = 1), ]
-    return(play)
-  }
-}
+}  
+  

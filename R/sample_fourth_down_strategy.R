@@ -1,7 +1,7 @@
 #' Sample NFL Play-by-Play Data with a Specific 4th down Strategy
 #'
 #' This function will return a sample play from the nflscrapR play-by-play
-#' data for a given down, distance, yards from the team's goal, using an
+#' data for a given down, distance, yards from the team's goal, using
 #' a given strategy on fourth down. The strategies are: empirical, always 
 #' going for it on fourth down, never going for it on fourth down, go for it 
 #' if one is less than a certain distance from a first down/touchdown,
@@ -13,6 +13,7 @@
 #' @param yards_from_own_goal The number of yards from the possession team's own goal
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #' @param strat The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`
+#' @param yards_less_than Parameter for `yds_less_than` strategy. If using `yds_less_than strategy` and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down
 #'
 #' @return A tibble containing lots of info
 #'
@@ -24,7 +25,8 @@
 #' sample_fourth_down_strategy(what_down = 3,
 #'                       yards_to_go = 2,
 #'                       yards_from_own_goal = 45,
-#'                       play_by_play_data = reg_pbp_2018)
+#'                       play_by_play_data = reg_pbp_2018,
+#'                       strat = "empirical")
 #' }
 
 sample_fourth_down_strategy <- function(what_down,
@@ -32,8 +34,8 @@ sample_fourth_down_strategy <- function(what_down,
                                         yards_from_own_goal,
                                         play_by_play_data,
                                         strat = "empirical",
-                                        ...) {
-  if (strat == "empiricial") {
+                                        yards_less_than = 5) {
+  if (strat == "empirical") {
     play <- play_by_play_data[!is.na(yfog) &
                                 !play_type %in% c("NA",
                                                   "no_play",
@@ -54,7 +56,8 @@ sample_fourth_down_strategy <- function(what_down,
                                 down == what_down &
                                 ydstogo == yards_to_go &
                                 yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
-  }
+
+    }
   
   # Always go for it
   #sample a play, if it is 4th down, we always go for it
@@ -136,7 +139,7 @@ sample_fourth_down_strategy <- function(what_down,
   
   if (strat == "yds_less_than") {
     if (what_down == 4 &
-        yards_to_go >= 5) {
+        yards_to_go >= yards_less_than) {
       play <- sample_play(
         what_down = what_down,
         yards_to_go = yards_to_go,
@@ -177,6 +180,7 @@ sample_fourth_down_strategy <- function(what_down,
       }
     }
   }
+  
   return(play)
 }
   

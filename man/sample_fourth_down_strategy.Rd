@@ -5,7 +5,7 @@
 \title{Sample NFL Play-by-Play Data with a Specific 4th down Strategy}
 \usage{
 sample_fourth_down_strategy(what_down, yards_to_go, yards_from_own_goal,
-  play_by_play_data, strat = "empirical", ...)
+  play_by_play_data, strat = "empirical", yards_less_than = 5)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}
@@ -17,13 +17,15 @@ sample_fourth_down_strategy(what_down, yards_to_go, yards_from_own_goal,
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 
 \item{strat}{The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`}
+
+\item{yards_less_than}{Parameter for `yds_less_than` strategy. If using `yds_less_than strategy` and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down}
 }
 \value{
 A tibble containing lots of info
 }
 \description{
 This function will return a sample play from the nflscrapR play-by-play
-data for a given down, distance, yards from the team's goal, using an
+data for a given down, distance, yards from the team's goal, using
 a given strategy on fourth down. The strategies are: empirical, always 
 going for it on fourth down, never going for it on fourth down, go for it 
 if one is less than a certain distance from a first down/touchdown,
@@ -35,6 +37,7 @@ used within the `nflsimulator::sample_play()` function.
 sample_fourth_down_strategy(what_down = 3,
                       yards_to_go = 2,
                       yards_from_own_goal = 45,
-                      play_by_play_data = reg_pbp_2018)
+                      play_by_play_data = reg_pbp_2018,
+                      strat = "empirical")
 }
 }
