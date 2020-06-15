@@ -43,6 +43,7 @@ This should be primarily used within the `nflsimulator::sample_play()` function.
 sample_passes_rushes_strategy(what_down = 3,
                       yards_to_go = 2,
                       yards_from_own_goal = 45,
-                      play_by_play_data = reg_pbp_2018)
+                      play_by_play_data = reg_pbp_2018,
+                      prop_passes = 0.5)
 }
 }

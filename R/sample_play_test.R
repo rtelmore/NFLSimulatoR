@@ -24,43 +24,62 @@
 #'             yards_to_go = 2,
 #'             yards_from_own_goal = 45,
 #'             play_by_play_data = pbp_data,
-#'             passes_and_rushes = T,
-#'             just_passes = F,
-#'             just_rushes = F)
+#'             strategy = "normal")
 #' }
 
 sample_play_test <- function(what_down,
-                        yards_to_go,
-                        yards_from_own_goal,
-                        play_by_play_data,
-                        strategy = "normal",
-                        ...){
+                             yards_to_go,
+                             yards_from_own_goal,
+                             play_by_play_data,
+                             strategy = "normal",
+                             prop_passes = NULL,
+                             strat = "empirical",
+                             yards_less_than = 5) {
   # Normal strategy
-  if(strategy == "normal"){
-  play <- play_by_play_data[!is.na(yfog) &
-                              !play_type %in% c("NA",
-                                                "no_play",
-                                                "qb_kneel",
-                                                "qb_spike") &
-                              down == what_down &
-                              ydstogo == yards_to_go &
-                              yfog == yards_from_own_goal, ][
-                                sample(1:(.N), size = 1), ]
-  
-  if(nrow(play) == 0){
-    yards_to_go = yards_to_go - 1
+  if (strategy == "normal") {
+    play <- play_by_play_data[!is.na(yfog) &
+                                !play_type %in% c("NA",
+                                                  "no_play",
+                                                  "qb_kneel",
+                                                  "qb_spike") &
+                                down == what_down &
+                                ydstogo == yards_to_go &
+                                yfog == yards_from_own_goal,][sample(1:(.N), size = 1),]
+    
+    if (nrow(play) == 0) {
+      yards_to_go = yards_to_go - 1
+    }
+    play <- play_by_play_data[!is.na(yfog) &
+                                !play_type %in% c("NA",
+                                                  "no_play",
+                                                  "qb_kneel",
+                                                  "qb_spike") &
+                                down == what_down &
+                                ydstogo == yards_to_go &
+                                yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+   return(play)
+    }
+  else if (strategy == "passes_rushes") {
+      play <- nflsimulator::sample_passes_rushes_strategy(
+        what_down = what_down,
+        yards_to_go = yards_to_go,
+        yards_from_own_goal = yards_from_own_goal,
+        play_by_play_data = play_by_play_data,
+        prop_passes = prop_passes
+      )
+    return(play)
   }
-  play <- play_by_play_data[!is.na(yfog) &
-                              !play_type %in% c("NA",
-                                                "no_play",
-                                                "qb_kneel",
-                                                "qb_spike") &
-                              down == what_down &
-                              ydstogo == yards_to_go &
-                              yfog == yards_from_own_goal, ][
-                                sample(1:.N, size = 1), ]
-  return(play)
+  else if (strategy == "fourth_downs") {
+    play <- nflsimulator::sample_fourth_down_strategy(
+      what_down = what_down,
+      yards_to_go = yards_to_go,
+      yards_from_own_goal = yards_from_own_goal,
+      play_by_play_data = play_by_play_data,
+      strat = strat,
+      yards_less_than = yards_less_than
+    )
+    return(play)
   }
   
-}  
+  }
   
