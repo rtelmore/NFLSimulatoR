@@ -32,9 +32,7 @@ sample_play_test <- function(what_down,
                              yards_from_own_goal,
                              play_by_play_data,
                              strategy = "normal",
-                             prop_passes = NULL,
-                             strat = "empirical",
-                             yards_less_than = 5) {
+                             ...) {
   # Normal strategy
   if (strategy == "normal") {
     play <- play_by_play_data[!is.na(yfog) &
@@ -65,7 +63,7 @@ sample_play_test <- function(what_down,
         yards_to_go = yards_to_go,
         yards_from_own_goal = yards_from_own_goal,
         play_by_play_data = play_by_play_data,
-        prop_passes = prop_passes
+        ...
       )
     return(play)
   }
@@ -75,8 +73,7 @@ sample_play_test <- function(what_down,
       yards_to_go = yards_to_go,
       yards_from_own_goal = yards_from_own_goal,
       play_by_play_data = play_by_play_data,
-      strat = strat,
-      yards_less_than = yards_less_than
+      ...
     )
     return(play)
   }

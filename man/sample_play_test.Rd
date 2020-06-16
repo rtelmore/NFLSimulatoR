@@ -5,8 +5,7 @@
 \title{Sample NFL Play-by-Play Data}
 \usage{
 sample_play_test(what_down, yards_to_go, yards_from_own_goal,
-  play_by_play_data, strategy = "normal", prop_passes = NULL,
-  strat = "empirical", yards_less_than = 5)
+  play_by_play_data, strategy = "normal", ...)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}
