@@ -2,7 +2,7 @@
 % Please edit documentation in R/sample_play_test.R
 \name{sample_play_test}
 \alias{sample_play_test}
-\title{Sample NFL Play-by-Play Data}
+\title{Sample one NFL play according to some strategy}
 \usage{
 sample_play_test(what_down, yards_to_go, yards_from_own_goal,
   play_by_play_data, strategy = "normal", ...)

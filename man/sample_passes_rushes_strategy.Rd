@@ -2,14 +2,7 @@
 % Please edit documentation in R/sample_passes_rushes_strategy.R
 \name{sample_passes_rushes_strategy}
 \alias{sample_passes_rushes_strategy}
-\title{This function will return a sample play from the nflscrapR play-by-play
-data for a given down, distance, yards from the team's goal, using
-a given pass/rush play strategy. The user may choose a value for the 
-proportion of passing plays to be sampled. Thus one can test strategies
-in which the team always passes, always runs, or some distribution of the two.
-This strategy is only intended for downs 1 - 3, and uses an empirical strategy 
-for fourth downs.
-This should be primarily used within the `nflsimulator::sample_play()` function.}
+\title{Sample NFL play-by-play data with a specified blend of rushing and passing}
 \usage{
 sample_passes_rushes_strategy(what_down, yards_to_go, yards_from_own_goal,
   play_by_play_data, prop_passes = 0.5)

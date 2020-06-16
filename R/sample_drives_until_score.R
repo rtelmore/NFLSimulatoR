@@ -20,9 +20,10 @@
 sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
-                                      STRATEGY1 = sample_play,
-                                      STRATEGY2 = sample_play,
-                                      progress = TRUE){
+                                      STRATEGY1 = "normal",
+                                      STRATEGY2 = "normal",
+                                      progress = TRUE,
+                                      ...){
   if(progress == TRUE){
     pb <- progress::progress_bar$new(
       format = "  Simulations [:bar] :percent eta: :eta",
@@ -54,13 +55,15 @@ sample_drives_until_score <- function(n_sims,
                                       new_distance,
                                       new_yfog,
                                       play_by_play_data,
-                                      FUN = STRATEGY1)
+                                      strategy = STRATEGY1,
+                                      ...)
       } else {
         play <- down_distance_updater(new_down,
                                       new_distance,
                                       new_yfog,
                                       play_by_play_data,
-                                      FUN = STRATEGY2)
+                                      strategy = STRATEGY2,
+                                      ...)
       }
       play$drive_counter <- drive_counter
       play$play_num <- play_num

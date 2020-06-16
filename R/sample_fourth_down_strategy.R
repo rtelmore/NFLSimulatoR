@@ -1,4 +1,4 @@
-#' Sample NFL Play-by-Play Data with a Specific 4th down Strategy
+#' Sample NFL play-by-play data with a specified 4th down strategy
 #'
 #' This function will return a sample play from the nflscrapR play-by-play
 #' data for a given down, distance, yards from the team's goal, using

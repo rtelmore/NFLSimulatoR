@@ -1,4 +1,4 @@
-#' Sample NFL Play-by-Play Data
+#' Sample one NFL play according to some strategy
 #'
 #' This function will return a sample play from the nflscrapR play-by-play
 #' data for a given down, distance, yards from the team's goal, using the

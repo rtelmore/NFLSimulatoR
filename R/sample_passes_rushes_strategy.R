@@ -1,3 +1,5 @@
+#' Sample NFL play-by-play data with a specified blend of rushing and passing
+#' 
 #' This function will return a sample play from the nflscrapR play-by-play
 #' data for a given down, distance, yards from the team's goal, using
 #' a given pass/rush play strategy. The user may choose a value for the 

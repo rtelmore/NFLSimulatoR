@@ -2,7 +2,7 @@
 % Please edit documentation in R/sample_fourth_down_strategy.R
 \name{sample_fourth_down_strategy}
 \alias{sample_fourth_down_strategy}
-\title{Sample NFL Play-by-Play Data with a Specific 4th down Strategy}
+\title{Sample NFL play-by-play data with a specified 4th down strategy}
 \usage{
 sample_fourth_down_strategy(what_down, yards_to_go, yards_from_own_goal,
   play_by_play_data, strat = "empirical", yards_less_than = 5)
