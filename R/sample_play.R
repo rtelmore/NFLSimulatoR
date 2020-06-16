@@ -7,10 +7,9 @@
 #' @param what_down The current down (1st, 2nd, 3rd, or 4th down)
 #' @param yards_to_go Number of yards to go until a first down or TD
 #' @param yards_from_own_goal The number of yards from the possession team's own goal
-#' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function#
-#' @param passes_and_rushes Logical parameter, TRUE if this function should sample both passing and rushing plays
-#' @param just_passes Logical parameter, TRUE if this function should only sample passing plays
-#' @param just_rushes Logical parameter, TRUE if this function should only sample rushing plays
+#' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
+#' @param strategy A string describing the strategy to be used, default is "normal", others include: "fourth_downs" and "passes_rushes" 
+#' which implement some strategy regarding 4th downs and proportion of plays that are passing plays, respectively.
 #'
 #' @return A tibble containing lots of info
 #'
