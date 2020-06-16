@@ -2,9 +2,10 @@
 % Please edit documentation in R/sample_play.R
 \name{sample_play}
 \alias{sample_play}
-\title{Sample NFL Play-by-Play Data}
+\title{Sample one NFL play according to some strategy}
 \usage{
-sample_play(what_down, yards_to_go, yards_from_own_goal, play_by_play_data)
+sample_play(what_down, yards_to_go, yards_from_own_goal, play_by_play_data,
+  strategy = "normal", ...)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}
@@ -14,6 +15,12 @@ sample_play(what_down, yards_to_go, yards_from_own_goal, play_by_play_data)
 \item{yards_from_own_goal}{The number of yards from the possession team's own goal}
 
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function#}
+
+\item{passes_and_rushes}{Logical parameter, TRUE if this function should sample both passing and rushing plays}
+
+\item{just_passes}{Logical parameter, TRUE if this function should only sample passing plays}
+
+\item{just_rushes}{Logical parameter, TRUE if this function should only sample rushing plays}
 }
 \value{
 A tibble containing lots of info
@@ -25,9 +32,10 @@ usual NFL-coaching strategy.
 }
 \examples{
 \dontrun{
-sample_play(what_down = 3,
+sample_play_test(what_down = 3,
             yards_to_go = 2,
             yards_from_own_goal = 45,
-            play_by_play_data = pbp_data)
+            play_by_play_data = pbp_data,
+            strategy = "normal")
 }
 }

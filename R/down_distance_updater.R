@@ -33,7 +33,7 @@ down_distance_updater <- function(what_down,
 
   play_success <- FALSE
   while(play_success == FALSE){
-    play <- nflsimulator::sample_play_test(what_down,
+    play <- nflsimulator::sample_play(what_down,
                 yards_to_go,
                 yards_from_own_goal,
                 play_by_play_data,
