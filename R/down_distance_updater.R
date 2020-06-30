@@ -1,3 +1,5 @@
+#' Update the down and distance of a drive
+#'
 #' The down and distance updater will run a play and update various game-based
 #' statistics accordingly.
 #'
@@ -5,7 +7,6 @@
 #' @param yards_to_go Number of yards to go until a first down or TD
 #' @param yards_from_own_goal The number of yards from the possession team's own goal
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
-#' @param FUN sample_play or sample_play_go_for_it
 #'
 #' @return A data.frame object
 #' @export
@@ -16,13 +17,14 @@
 #'                       yards_to_go = 2,
 #'                       yards_from_own_goal = 45,
 #'                       play_by_play_data = pbp_data,
-#'                       FUN = sample_play_go_for_it)
+#'                       strategy = "normal")
 #' }
+#' 
 down_distance_updater <- function(what_down,
                                   yards_to_go,
                                   yards_from_own_goal,
                                   play_by_play_data,
-                                  FUN = sample_play){
+                                  ...){
   # down_original <- what_down
   if (yards_from_own_goal <= 5){yards_from_own_goal <- 5}
   if (yards_from_own_goal > 90){yards_to_go = 100 - yards_from_own_goal}
@@ -30,10 +32,11 @@ down_distance_updater <- function(what_down,
 
   play_success <- FALSE
   while(play_success == FALSE){
-    play <- FUN(what_down,
+    play <- nflsimulator::sample_play(what_down,
                 yards_to_go,
                 yards_from_own_goal,
-                play_by_play_data)
+                play_by_play_data,
+                ...)
     if(any(is.na(play$desc), identical(play$desc, character(0)))){
       play_success <- FALSE
       #yards_from_own_goal <- yards_from_own_goal + 1
