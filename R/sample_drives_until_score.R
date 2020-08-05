@@ -20,7 +20,7 @@
 sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
-                                      STRATEGY1 = "normal",
+                                      STRATEGY1 = "normal", #strat_1_args...
                                       STRATEGY2 = "normal",
                                       progress = TRUE,
                                       ...){
