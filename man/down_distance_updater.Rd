@@ -15,8 +15,6 @@ down_distance_updater(what_down, yards_to_go, yards_from_own_goal,
 \item{yards_from_own_goal}{The number of yards from the possession team's own goal}
 
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
-
-\item{FUN}{sample_play or sample_play_go_for_it}
 }
 \value{
 A data.frame object

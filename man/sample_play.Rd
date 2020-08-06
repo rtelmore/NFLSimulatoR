@@ -14,13 +14,10 @@ sample_play(what_down, yards_to_go, yards_from_own_goal, play_by_play_data,
 
 \item{yards_from_own_goal}{The number of yards from the possession team's own goal}
 
-\item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function#}
+\item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 
-\item{passes_and_rushes}{Logical parameter, TRUE if this function should sample both passing and rushing plays}
-
-\item{just_passes}{Logical parameter, TRUE if this function should only sample passing plays}
-
-\item{just_rushes}{Logical parameter, TRUE if this function should only sample rushing plays}
+\item{strategy}{A string describing the strategy to be used, default is "normal", others include: "fourth_downs" and "passes_rushes" 
+which implement some strategy regarding 4th downs and proportion of plays that are passing plays, respectively.}
 }
 \value{
 A tibble containing lots of info
