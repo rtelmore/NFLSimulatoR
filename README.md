@@ -10,9 +10,9 @@ If you are just getting started with **nflsimulator** we recommend...
 
 ### Resources
 
-* [Open an issue](https://github.com/stan-dev/bayesplot/issues) (GitHub issues for bug reports, feature requests)
+* [Open an issue](https://github.com/rtelmore/nflsimulator/issues) (GitHub issues for bug reports, feature requests)
 
 ### Examples 
 
-<img src="man/figures/NYT_Bot.jpg" width = 50% />
+<img src="man/figures/NYT_Bot.png" width = 50% />
 
