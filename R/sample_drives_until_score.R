@@ -19,7 +19,7 @@
 sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
-                                      STRATEGY1 = "normal",
+                                      strategy1 = "normal",
                                       progress = TRUE,
                                       ...){
   if(progress == TRUE){
@@ -53,7 +53,7 @@ sample_drives_until_score <- function(n_sims,
                                       new_distance,
                                       new_yfog,
                                       play_by_play_data,
-                                      strategy = STRATEGY1,
+                                      strategy = strategy1,
                                       ...)
       } else {
         play <- down_distance_updater(new_down,

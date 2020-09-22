@@ -4,8 +4,13 @@
 \alias{sample_passes_rushes_strategy}
 \title{Sample NFL play-by-play data with a specified blend of rushing and passing}
 \usage{
-sample_passes_rushes_strategy(what_down, yards_to_go, yards_from_own_goal,
-  play_by_play_data, prop_passes = 0.5)
+sample_passes_rushes_strategy(
+  what_down,
+  yards_to_go,
+  yards_from_own_goal,
+  play_by_play_data,
+  prop_passes = 0.5
+)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}

@@ -4,8 +4,7 @@
 \alias{sample_play_old}
 \title{Sample NFL Play-by-Play Data}
 \usage{
-sample_play_old(what_down, yards_to_go, yards_from_own_goal,
-  play_by_play_data)
+sample_play_old(what_down, yards_to_go, yards_from_own_goal, play_by_play_data)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}

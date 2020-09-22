@@ -4,8 +4,13 @@
 \alias{down_distance_updater}
 \title{Update the down and distance of a drive}
 \usage{
-down_distance_updater(what_down, yards_to_go, yards_from_own_goal,
-  play_by_play_data, ...)
+down_distance_updater(
+  what_down,
+  yards_to_go,
+  yards_from_own_goal,
+  play_by_play_data,
+  ...
+)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}
@@ -30,6 +35,6 @@ down_distance_updater(what_down = 3,
                       yards_from_own_goal = 45,
                       play_by_play_data = pbp_data,
                       strategy = "normal")
-}
+} 
 
 }

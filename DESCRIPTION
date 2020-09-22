@@ -15,4 +15,4 @@ Imports:
     data.table,
     progress
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1

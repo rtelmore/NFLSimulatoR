@@ -2,10 +2,16 @@
 % Please edit documentation in R/sample_drives_until_score.R
 \name{sample_drives_until_score}
 \alias{sample_drives_until_score}
-\title{Sample a Series of Drives Until a Score}
+\title{Sample a Series of Drives Until a Score, a strategy to test verses the normal strategy}
 \usage{
-sample_drives_until_score(n_sims, from_yard_line = 25, play_by_play_data,
-  STRATEGY1 = "normal", STRATEGY2 = "normal", progress = TRUE, ...)
+sample_drives_until_score(
+  n_sims,
+  from_yard_line = 25,
+  play_by_play_data,
+  strategy = "normal",
+  progress = TRUE,
+  ...
+)
 }
 \arguments{
 \item{n_sims}{The number of simulations}
@@ -14,17 +20,15 @@ sample_drives_until_score(n_sims, from_yard_line = 25, play_by_play_data,
 
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 
-\item{STRATEGY1}{one of sample_play or sample_play_go_for_it}
-
-\item{STRATEGY2}{one of sample_play or sample_play_go_for_it}
-
 \item{progress}{logical for inclusion of a progress bar}
+
+\item{STRATEGY1}{"normal", "passes_rushes", or "fourth_downs"}
 }
 \value{
 A data.frame of drives
 }
 \description{
-Sample a Series of Drives Until a Score
+Sample a Series of Drives Until a Score, a strategy to test verses the normal strategy
 }
 \examples{
 \dontrun{

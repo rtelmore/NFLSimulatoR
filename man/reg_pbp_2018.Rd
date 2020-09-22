@@ -4,7 +4,8 @@
 \name{reg_pbp_2018}
 \alias{reg_pbp_2018}
 \title{NFL Play-by-Play Data 2018}
-\format{A data frame with 45156 rows and 256 variables:
+\format{
+A data frame with 45156 rows and 256 variables:
 \describe{
   \item{play_id}{id within a game}
   \item{game_id}{id of the specific game}
@@ -12,7 +13,8 @@
   \item{away_team}{away team playing}
   \item{posteam}{team with possession}
   ...
-}}
+}
+}
 \source{
 \url{https://ryurko.github.io/nflscrapR-data/}
 }

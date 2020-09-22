@@ -4,8 +4,14 @@
 \alias{sample_fourth_down_strategy}
 \title{Sample NFL play-by-play data with a specified 4th down strategy}
 \usage{
-sample_fourth_down_strategy(what_down, yards_to_go, yards_from_own_goal,
-  play_by_play_data, strat = "empirical", yards_less_than = 5)
+sample_fourth_down_strategy(
+  what_down,
+  yards_to_go,
+  yards_from_own_goal,
+  play_by_play_data,
+  strat = "empirical",
+  yards_less_than = 5
+)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}

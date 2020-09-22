@@ -4,8 +4,14 @@
 \alias{sample_play}
 \title{Sample one NFL play according to some strategy}
 \usage{
-sample_play(what_down, yards_to_go, yards_from_own_goal, play_by_play_data,
-  strategy = "normal", ...)
+sample_play(
+  what_down,
+  yards_to_go,
+  yards_from_own_goal,
+  play_by_play_data,
+  strategy = "normal",
+  ...
+)
 }
 \arguments{
 \item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}
