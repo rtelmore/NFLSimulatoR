@@ -18,7 +18,7 @@
 #'                       yards_from_own_goal = 45,
 #'                       play_by_play_data = pbp_data,
 #'                       strategy = "normal")
-#' }
+#' } 
 #' 
 down_distance_updater <- function(what_down,
                                   yards_to_go,
@@ -37,7 +37,7 @@ down_distance_updater <- function(what_down,
                 yards_from_own_goal,
                 play_by_play_data,
                 ...)
-    if(any(is.na(play$desc), identical(play$desc, character(0)))){
+    if(any(is.na(play$desc),identical(play$desc, character(0)))){
       play_success <- FALSE
       #yards_from_own_goal <- yards_from_own_goal + 1
       yards_from_own_goal <- min(99,yards_from_own_goal + sample(c(1,-1,2,-2),size = 1))
