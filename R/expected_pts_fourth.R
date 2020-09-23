@@ -25,7 +25,7 @@
 
 expected_pts_fourth <- function(yards_from_goal,
                                 yds_to_go,
-                                play_by_play_data){
+                                play_data){
   if (yds_to_go >= 20){yds_to_go <- 20}
   
   #go for it expected value

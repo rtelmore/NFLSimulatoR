@@ -249,7 +249,7 @@ sample_fourth_down_strategy <- function(what_down,
       dec <- expected_pts_fourth(yards_from_goal = (100 - yards_from_own_goal),
                             yds_to_go = yards_to_go,
                             play_data = play_by_play_data)
-      best_dec <- names(dv)[apply(dv,1,which.max)]
+      best_dec <- names(dec)[apply(dec,1,which.max)]
       if(best_dec == "ev_goforit"){
         play <- play_by_play_data[!is.na(yfog) &
                                       play_type %in% c("pass", "run") &
