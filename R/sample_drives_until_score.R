@@ -46,14 +46,14 @@ sample_drives_until_score <- function(n_sims,
     turnover_on_downs <- FALSE
     is_turnover <- FALSE
     drive_counter <- 1
-    if (single_drive){
-      while_logic <- (!is_td_offense & 
-        !is_field_goal & 
-        !is_safety & 
-        drive_counter == 1)
-    } else {
+    # if (single_drive){
+    #   while_logic <- (!is_td_offense & 
+    #     !is_field_goal & 
+    #     !is_safety & 
+    #     drive_counter == 1)
+    # } else {
       while_logic <- !is_td_offense & !is_field_goal & !is_safety
-    }
+    # }
     while (while_logic) {
       if(new_distance > 100 - new_yfog){
         new_distance <- 100 - new_yfog
