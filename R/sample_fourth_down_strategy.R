@@ -186,7 +186,7 @@ sample_fourth_down_strategy <- function(what_down,
                                     ydstogo == yards_to_go &
                                     yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
       }
-      print(nrow(play))
+      # print(nrow(play))
     }
     if (what_down == 4 &
         yards_to_go >= yards_less_than) {
@@ -243,7 +243,7 @@ sample_fourth_down_strategy <- function(what_down,
                                     ydstogo == yards_to_go &
                                     yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
       }
-      print(nrow(play))
+      # print(nrow(play))
     }
     if(what_down == 4){
       dec <- expected_pts_fourth(yards_from_goal = (100 - yards_from_own_goal),
