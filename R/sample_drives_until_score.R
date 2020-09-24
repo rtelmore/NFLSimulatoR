@@ -85,13 +85,13 @@ sample_drives_until_score <- function(n_sims,
         play_num <- 1
         drive_counter <- drive_counter + 1
       }
-      if (single_drive){
+      if (single_drive) {
         while_logic <- (!is_td_offense &
           !is_field_goal &
           !is_safety &
           drive_counter == 1)
       } else {
-      while_logic <- !is_td_offense & !is_field_goal & !is_safety
+      while_logic <- (!is_td_offense & !is_field_goal & !is_safety)
       }
       
     }
@@ -99,6 +99,5 @@ sample_drives_until_score <- function(n_sims,
     i <- i + 1
     all_drives <- rbind(all_drives, current_drive)
   }
-  # if(single_drive == TRUE){all_drives <- dplyr::filter(all_drives,drive_counter == 1)}
   return(all_drives)
 }
