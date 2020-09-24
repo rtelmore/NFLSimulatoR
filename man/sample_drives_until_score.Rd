@@ -8,8 +8,9 @@ sample_drives_until_score(
   n_sims,
   from_yard_line = 25,
   play_by_play_data,
-  strategy = "normal",
+  strategy1 = "normal",
   progress = TRUE,
+  single_drive = F,
   ...
 )
 }

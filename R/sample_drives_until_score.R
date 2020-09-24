@@ -22,6 +22,7 @@ sample_drives_until_score <- function(n_sims,
                                       play_by_play_data,
                                       strategy1 = "normal",
                                       progress = TRUE,
+                                      single_drive = F,
                                       ...){
   if(progress == TRUE){
     pb <- progress::progress_bar$new(
@@ -96,5 +97,6 @@ sample_drives_until_score <- function(n_sims,
     i <- i + 1
     all_drives <- rbind(all_drives, current_drive)
   }
+  if(single_drive == TRUE){all_drives <- dplyr::filter(all_drives,drive_counter == 1)}
   return(all_drives)
 }
