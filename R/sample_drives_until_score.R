@@ -4,6 +4,7 @@
 #' @param from_yard_line The starting field position (defaults to 25)
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #' @param STRATEGY1 "normal", "passes_rushes", or "fourth_downs"
+#' @param single_drive TRUE indicates only a single drive
 #' @param progress logical for inclusion of a progress bar
 #'
 #' @return A data.frame of drives
@@ -44,7 +45,15 @@ sample_drives_until_score <- function(n_sims,
     turnover_on_downs <- FALSE
     is_turnover <- FALSE
     drive_counter <- 1
-    while (!is_td_offense & !is_field_goal & !is_safety) {
+    if (single_drive){
+      while_logic <- (!is_td_offense & 
+        !is_field_goal & 
+        !is_safety & 
+        drive_counter == 1)
+    } else {
+      while_logic <- !is_td_offense & !is_field_goal & !is_safety
+    }
+    while (while_logic) {
       if(new_distance > 100 - new_yfog){
         new_distance <- 100 - new_yfog
       }
