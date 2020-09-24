@@ -84,7 +84,7 @@ sample_fourth_down_strategy <- function(what_down,
                                     ydstogo == yards_to_go &
                                     yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
       }
-      print(nrow(play))
+      # print(nrow(play))
     }
     if (what_down != 1) {
       play <- play_by_play_data[!is.na(yfog) &
