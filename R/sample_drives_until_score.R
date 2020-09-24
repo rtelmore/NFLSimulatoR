@@ -46,14 +46,7 @@ sample_drives_until_score <- function(n_sims,
     turnover_on_downs <- FALSE
     is_turnover <- FALSE
     drive_counter <- 1
-    # if (single_drive){
-    #   while_logic <- (!is_td_offense &
-    #     !is_field_goal &
-    #     !is_safety &
-    #     drive_counter == 1)
-    # } else {
-    while_logic <- !is_td_offense & !is_field_goal & !is_safety
-    # }
+    while_logic <- TRUE
     while (while_logic) {
       if(new_distance > 100 - new_yfog){
         new_distance <- 100 - new_yfog
@@ -92,11 +85,20 @@ sample_drives_until_score <- function(n_sims,
         play_num <- 1
         drive_counter <- drive_counter + 1
       }
+      if (single_drive){
+        while_logic <- (!is_td_offense &
+          !is_field_goal &
+          !is_safety &
+          drive_counter == 1)
+      } else {
+      while_logic <- !is_td_offense & !is_field_goal & !is_safety
+      }
+      
     }
     current_drive$sim <- i
     i <- i + 1
     all_drives <- rbind(all_drives, current_drive)
   }
-  if(single_drive == TRUE){all_drives <- dplyr::filter(all_drives,drive_counter == 1)}
+  # if(single_drive == TRUE){all_drives <- dplyr::filter(all_drives,drive_counter == 1)}
   return(all_drives)
 }
