@@ -33,13 +33,16 @@ expected_pts_fourth <- function(yards_from_goal,
     count(
       filter(
         play_data,
-        yardline_100 == yards_from_goal &
+        yardline_100 %in% c(yards_from_goal, yards_from_goal -
+                              1, yards_from_goal + 1) &
           yards_gained >= yds_to_go &
           play_type %in% c('run', 'pass')
       )
     ) / count(filter(
       play_data,
-      yardline_100 == yards_from_goal & play_type %in% c('run', 'pass')
+      yardline_100 %in% c(yards_from_goal, yards_from_goal -
+                       1, yards_from_goal + 1) &
+        play_type %in% c('run', 'pass')
     ))
   
   p_stopped <- 1 - p_gain
@@ -47,7 +50,9 @@ expected_pts_fourth <- function(yards_from_goal,
   df_gain <-
     filter(
       play_data,
-      yardline_100 == yards_from_goal - yds_to_go,
+      yardline_100 %in% c(yards_from_goal - yards_to_go,
+                          yards_from_goal - yards_to_go -1,
+                          yards_from_goal - yards_to_go +1),
       down == 1,
       ydstogo == ifelse((yards_from_goal - yds_to_go) < 10,
                         yards_from_goal - yds_to_go,
@@ -59,7 +64,9 @@ expected_pts_fourth <- function(yards_from_goal,
   df_stopped <-
     filter(
       play_data,
-      yardline_100 == 100 - yards_from_goal,
+      yardline_100 %in% c(100 - yards_from_goal,
+                             100 - yards_from_goal -1,
+                             100- yards_from_goal +1),
       down == 1,
       ydstogo == ifelse((100 - yards_from_goal) < 10, 100 - yards_from_goal, 10)
     )
@@ -67,17 +74,29 @@ expected_pts_fourth <- function(yards_from_goal,
   ev_goforit <- as.numeric(p_gain * ep_gain + p_stopped * ep_stopped)
   
   # field goal expected value
-  df_fg <- filter(play_data, yardline_100 == yards_from_goal,play_type == 'field_goal')
+  df_fg <- filter(play_data, 
+                  yardline_100 %in% c(yards_from_goal,
+                                      yards_from_goal -1,
+                                      yards_from_goal +1),
+                  play_type == 'field_goal')
   p_make <- mean(df_fg$fg_prob,na.rm = T)
+  
   p_miss <- 1 - p_make
-  df_miss <- filter(play_data,yardline_100 == ifelse(yards_from_goal <= 20,20,yards_from_goal+18),down == 1,ydstogo == 10)
+  
+  df_miss <- filter(play_data,
+                    yardline_100 %in% `if`(yards_from_goal <= 20, c(19:21), c(yards_from_goal + 18,yards_from_goal+17,yards_from_goal+19)),
+                    down == 1,
+                    ydstogo == 10)
+  
   df_opp_fg <- filter(play_data, yardline_100 == 75,down == 1, ydstogo == 10)
   ep_opp_fg <- -1*mean(df_opp_fg$ep,na.rm = T)
   ep_miss <- -1*mean(df_miss$ep,na.rm = T)
   ev_fg <- p_make*3 + ep_opp_fg + p_miss*ep_miss
   
   # punt expected value 
-  df_punt <- filter(play_data, yardline_100 == yards_from_goal, play_type == "punt") %>%
+  df_punt <- filter(play_data, 
+                    yardline_100 %in% c(yards_from_goal, yards_from_goal + 1, yards_from_goal -1), 
+                    play_type == "punt") %>%
     mutate(opp_yard_line = ifelse(touchback == 1, 75, -1*(yardline_100 - kick_distance - 100 + return_yards)))
   avg_opp_ydln <- round(mean(df_punt$opp_yard_line, na.rm = TRUE))
   df_punt_opp <- filter(play_data, yardline_100 == avg_opp_ydln,down==1,ydstogo ==10)

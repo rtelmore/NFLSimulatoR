@@ -10,7 +10,7 @@ sample_drives_until_score(
   play_by_play_data,
   strategy1 = "normal",
   progress = TRUE,
-  single_drive = F,
+  single_drive = FALSE,
   ...
 )
 }
@@ -22,6 +22,8 @@ sample_drives_until_score(
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 
 \item{progress}{logical for inclusion of a progress bar}
+
+\item{single_drive}{TRUE indicates only a single drive}
 
 \item{STRATEGY1}{"normal", "passes_rushes", or "fourth_downs"}
 }
