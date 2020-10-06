@@ -40,7 +40,7 @@ sample_passes_rushes_strategy <- function(what_down,
                                                                    "qb_kneel",
                                                                    "qb_spike") &
                                                  down == what_down &
-                                                 ydstogo == yards_to_go &
+                                                 ydstogo %in% c(yards_to_go - 1:yards_to_go + 1) &
                                                  yfog == yards_from_own_goal,][sample(1:(.N), size = 1),]
   
   if (nrow(play) == 0) {
@@ -52,7 +52,7 @@ sample_passes_rushes_strategy <- function(what_down,
                                                 "qb_kneel",
                                                 "qb_spike") &
                               down == what_down &
-                              ydstogo == yards_to_go &
+                              ydstogo %in% c(yards_to_go - 1:yards_to_go + 1) &
                               yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
   return(play)
   }
@@ -65,7 +65,7 @@ sample_passes_rushes_strategy <- function(what_down,
                                                   "qb_spike",
                                                   "run") &
                                 down == what_down &
-                                ydstogo == yards_to_go &
+                                ydstogo %in% c(yards_to_go - 1:yards_to_go + 1) &
                                 yfog == yards_from_own_goal,][sample(1:(.N), size = 1),]
     
     
@@ -79,7 +79,7 @@ sample_passes_rushes_strategy <- function(what_down,
                                                   "qb_spike",
                                                   "run") &
                                 down == what_down &
-                                ydstogo == yards_to_go &
+                                ydstogo %in% c(yards_to_go - 1:yards_to_go + 1) &
                                 yfog == yards_from_own_goal,][sample(1:(.N), size = 1),]
     
     return(play)
@@ -93,7 +93,7 @@ sample_passes_rushes_strategy <- function(what_down,
                                                   "qb_spike",
                                                   "pass") &
                                 down == what_down &
-                                ydstogo == yards_to_go &
+                                ydstogo %in% c(yards_to_go - 1:yards_to_go + 1) &
                                 yfog == yards_from_own_goal,][sample(1:(.N), size = 1),]
     
     if (nrow(play) == 0 & what_down == 1) {
