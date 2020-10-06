@@ -104,6 +104,8 @@ down_distance_updater <- function(what_down,
       points = points,
       new_yard_line = new_yard_line,
       safety = play$safety,
+      exp_pts = play$ep,
+      exp_pts_added = play$epa,
       stringsAsFactors = FALSE
     )
   )
