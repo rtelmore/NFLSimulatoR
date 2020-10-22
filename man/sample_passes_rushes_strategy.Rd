@@ -22,6 +22,9 @@ sample_passes_rushes_strategy(
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 
 \item{prop_passes}{Proportion of plays that should be pass plays, between 0 and 1, inclusive}
+
+\item{window_yards_from_own_goal}{Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
+will occur within plus or minus 1 of the "yards_from_own_goal" value)}
 }
 \value{
 A tibble containing lots of info

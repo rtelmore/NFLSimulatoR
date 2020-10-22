@@ -11,6 +11,8 @@
 #' @param what_down The current down (1st, 2nd, 3rd, or 4th down)
 #' @param yards_to_go Number of yards to go until a first down or TD
 #' @param yards_from_own_goal The number of yards from the possession team's own goal
+#' @param window_yards_from_own_goal Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
+#' will occur within plus or minus 1 of the "yards_from_own_goal" value)
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #' @param strat The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`
 #' @param yards_less_than Parameter for `yds_less_than` strategy. If using `yds_less_than strategy` and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down
@@ -43,7 +45,8 @@ sample_fourth_down_strategy <- function(what_down,
                                                   "qb_spike") &
                                 down == what_down &
                                 ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal,][sample(1:(.N), size = 1),]
+                                yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                              (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
     
     if (nrow(play) == 0) {
       yards_to_go = yards_to_go - 1
@@ -55,7 +58,9 @@ sample_fourth_down_strategy <- function(what_down,
                                                   "qb_spike") &
                                 down == what_down &
                                 ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                              (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+    
 
   if (nrow(play) == 0) {
     yards_from_own_goal = yards_from_own_goal - 1
@@ -67,7 +72,9 @@ sample_fourth_down_strategy <- function(what_down,
                                                 "qb_spike") &
                               down == what_down &
                               ydstogo == yards_to_go &
-                              yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                              yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                            (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+  
   }
   # Always go for it
   #sample a play, if it is 4th down, we always go for it
@@ -76,13 +83,17 @@ sample_fourth_down_strategy <- function(what_down,
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
       if(nrow(play) == 0 ){
         play <- play_by_play_data[!is.na(yfog) &
                                     (down == what_down + 1) &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
       }
       # print(nrow(play))
     }
@@ -91,13 +102,17 @@ sample_fourth_down_strategy <- function(what_down,
                                   play_type %in% c("pass", "run") &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
     } else{
       play <- play_by_play_data[!is.na(yfog) &
                                   play_type %in% c("pass", "run") &
                                   down == what_down &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
     }
     if (nrow(play) == 0 & what_down != 1) {
       #In case no plays exist
@@ -105,14 +120,18 @@ sample_fourth_down_strategy <- function(what_down,
                                   play_type %in% c("pass", "run") &
                                   down == what_down - 1 &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
     } else if (nrow(play) == 0 & what_down == 1) {
       play <- play_by_play_data[!is.na(yfog) &
                                   play_type %in% c("pass", "run") &
                                   down == what_down + 1 &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
     }
   }
@@ -124,13 +143,17 @@ sample_fourth_down_strategy <- function(what_down,
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
       if(nrow(play) == 0 ){
         play <- play_by_play_data[!is.na(yfog) &
                                     (down == what_down + 1) &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
       }
 
       } else if (what_down == 4) {
@@ -139,12 +162,16 @@ sample_fourth_down_strategy <- function(what_down,
                                                     "no_play", "qb_kneel") &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
     } else if (what_down != 1) {
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
     }
     if (nrow(play) == 0 & what_down == 4) {
       #In case no plays exist
@@ -153,13 +180,17 @@ sample_fourth_down_strategy <- function(what_down,
                                   down == what_down - 1 &
                                   ydstogo %in% c(yards_to_go - 1, yards_to_go + 1) &
                                   # give a 2 yard range
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
     } else if (nrow(play) == 0 & what_down == 1) {
       play <- play_by_play_data[!is.na(yfog) &
                                   down == what_down + 1 &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
     } else if (nrow(play) == 0 &
                what_down != 1) {
@@ -168,7 +199,9 @@ sample_fourth_down_strategy <- function(what_down,
                                   #play_type %in% c("pass", "run") &
                                   down == what_down - 1 &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
     }
   }
@@ -178,13 +211,17 @@ sample_fourth_down_strategy <- function(what_down,
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
       if(nrow(play) == 0 ){
         play <- play_by_play_data[!is.na(yfog) &
                                     (down == what_down + 1) &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
       }
       # print(nrow(play))
     }
@@ -204,13 +241,17 @@ sample_fourth_down_strategy <- function(what_down,
                                     (down == what_down |
                                        what_down - 1) &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal, ][sample(1:.N, size = 1), ]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
       } else{
         play <- play_by_play_data[!is.na(yfog) &
                                     play_type %in% c("pass", "run") &
                                     down == what_down &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal, ][sample(1:.N, size = 1), ]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
       }
       if (nrow(play) == 0 & what_down != 1) {
         #In case no plays exist
@@ -218,14 +259,18 @@ sample_fourth_down_strategy <- function(what_down,
                                     play_type %in% c("pass", "run") &
                                     down == what_down - 1 &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal, ][sample(1:.N, size = 1), ]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
         
       } else if (nrow(play) == 0 & what_down == 1) {
         play <- play_by_play_data[!is.na(yfog) &
                                     play_type %in% c("pass", "run") &
                                     down == what_down + 1 &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal, ][sample(1:.N, size = 1), ]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
         
       }
     }
@@ -235,13 +280,17 @@ sample_fourth_down_strategy <- function(what_down,
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
       if(nrow(play) == 0 ){
         play <- play_by_play_data[!is.na(yfog) &
                                     (down == what_down + 1) &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
       }
       # print(nrow(play))
     }
@@ -255,7 +304,9 @@ sample_fourth_down_strategy <- function(what_down,
                                       play_type %in% c("pass", "run") &
                                       down == what_down &
                                       ydstogo == yards_to_go &
-                                      yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                      yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
         
         if (nrow(play) == 0 & what_down != 1) {
           #In case no plays exist
@@ -263,7 +314,9 @@ sample_fourth_down_strategy <- function(what_down,
                                       play_type %in% c("pass", "run") &
                                       down == what_down - 1 &
                                       ydstogo == yards_to_go &
-                                      yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                      yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                    (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+          
           
         }
       }
@@ -272,7 +325,9 @@ sample_fourth_down_strategy <- function(what_down,
                                     play_type %in% c("field_goal") &
                                     down == what_down &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
         
         if (nrow(play) == 0 & what_down != 1) {
           #In case no plays exist
@@ -280,7 +335,9 @@ sample_fourth_down_strategy <- function(what_down,
                                       play_type %in% c("pass", "run") &
                                       down == what_down - 1 &
                                       ydstogo == yards_to_go &
-                                      yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                      yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                    (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+          
           
         }
       }
@@ -289,7 +346,9 @@ sample_fourth_down_strategy <- function(what_down,
                                     play_type %in% c("punt") &
                                     down == what_down &
                                     ydstogo == yards_to_go &
-                                    yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                    yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                  (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+        
         
         if (nrow(play) == 0 & what_down != 1) {
           #In case no plays exist
@@ -297,7 +356,9 @@ sample_fourth_down_strategy <- function(what_down,
                                       play_type %in% c("punt") &
                                       down == what_down - 1 &
                                       ydstogo == yards_to_go &
-                                      yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                      yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                    (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+          
           
         }
       }
@@ -305,7 +366,9 @@ sample_fourth_down_strategy <- function(what_down,
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
     }
     if (nrow(play) == 0 & what_down != 1) {
       #In case no plays exist
@@ -313,14 +376,18 @@ sample_fourth_down_strategy <- function(what_down,
                                   play_type %in% c("pass", "run") &
                                   down == what_down - 1 &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal, ][sample(1:.N, size = 1), ]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
     } else if (nrow(play) == 0 & what_down == 1) {
       play <- play_by_play_data[!is.na(yfog) &
                                   play_type %in% c("pass", "run") &
                                   down == what_down + 1 &
                                   ydstogo == yards_to_go &
-                                  yfog == yards_from_own_goal, ][sample(1:.N, size = 1), ]
+                                  yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                                (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
+      
       
     }
   }

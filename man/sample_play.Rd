@@ -8,6 +8,7 @@ sample_play(
   what_down,
   yards_to_go,
   yards_from_own_goal,
+  window_yards_from_own_goal = 1,
   play_by_play_data,
   strategy = "normal",
   ...
@@ -19,6 +20,9 @@ sample_play(
 \item{yards_to_go}{Number of yards to go until a first down or TD}
 
 \item{yards_from_own_goal}{The number of yards from the possession team's own goal}
+
+\item{window_yards_from_own_goal}{Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
+will occur within plus or minus 1 of the "yards_from_own_goal" value)}
 
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 

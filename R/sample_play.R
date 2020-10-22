@@ -7,6 +7,8 @@
 #' @param what_down The current down (1st, 2nd, 3rd, or 4th down)
 #' @param yards_to_go Number of yards to go until a first down or TD
 #' @param yards_from_own_goal The number of yards from the possession team's own goal
+#' @param window_yards_from_own_goal Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
+#' will occur within plus or minus 1 of the "yards_from_own_goal" value)
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #' @param strategy A string describing the strategy to be used, default is "normal", others include: "fourth_downs" and "passes_rushes" 
 #' which implement some strategy regarding 4th downs and proportion of plays that are passing plays, respectively.
@@ -29,6 +31,7 @@
 sample_play <- function(what_down,
                              yards_to_go,
                              yards_from_own_goal,
+                             window_yards_from_own_goal = 1,
                              play_by_play_data,
                              strategy = "normal",
                              ...) {
@@ -41,7 +44,8 @@ sample_play <- function(what_down,
                                                   "qb_spike") &
                                 down == what_down &
                                 ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal,][sample(1:(.N), size = 1),]
+                                yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                              (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
     
     if (nrow(play) == 0) {
       yards_to_go = yards_to_go - 1
@@ -53,7 +57,8 @@ sample_play <- function(what_down,
                                                   "qb_spike") &
                                 down == what_down &
                                 ydstogo == yards_to_go &
-                                yfog == yards_from_own_goal,][sample(1:.N, size = 1),]
+                                yfog %in% c((yards_from_own_goal - window_yards_from_own_goal):
+                                              (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
    return(play)
     }
   else if (strategy == "passes_rushes") {

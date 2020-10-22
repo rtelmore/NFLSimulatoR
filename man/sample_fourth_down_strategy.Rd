@@ -25,6 +25,9 @@ sample_fourth_down_strategy(
 \item{strat}{The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`}
 
 \item{yards_less_than}{Parameter for `yds_less_than` strategy. If using `yds_less_than strategy` and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down}
+
+\item{window_yards_from_own_goal}{Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
+will occur within plus or minus 1 of the "yards_from_own_goal" value)}
 }
 \value{
 A tibble containing lots of info
