@@ -3,7 +3,10 @@
 <!-- badges: start -->
   [![R build status](https://github.com/rtelmore/nflsimulator/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/nflsimulator/actions)
   <!-- badges: end -->
-  
+
+## Website  
+The nflsimulator package website is hosted at [datacolorado.com/nflsimulator](http://datacolorado.com/nflsimulator).
+
 ### Overview
 **nflsimulator** is an R Package that provides an array of functions for sampling NFL data as well as testing various strategies fof fourth down decision making. 
 
