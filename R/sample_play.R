@@ -12,7 +12,8 @@
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #' @param strategy A string describing the strategy to be used, default is "normal", others include: "fourth_downs" and "passes_rushes" 
 #' which implement some strategy regarding 4th downs and proportion of plays that are passing plays, respectively.
-#'
+#' @param ... Additional arguments for different strategies
+#' 
 #' @return A tibble containing lots of info
 #'
 #' @import data.table

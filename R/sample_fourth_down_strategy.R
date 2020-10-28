@@ -27,6 +27,7 @@
 #' sample_fourth_down_strategy(what_down = 3,
 #'                       yards_to_go = 2,
 #'                       yards_from_own_goal = 45,
+#'                       window_yards_from_own_goal = 2,
 #'                       play_by_play_data = reg_pbp_2018,
 #'                       strat = "empirical")
 #' }
@@ -34,6 +35,7 @@
 sample_fourth_down_strategy <- function(what_down,
                                         yards_to_go,
                                         yards_from_own_goal,
+                                        window_yards_from_own_goal = 1,
                                         play_by_play_data,
                                         strat = "empirical",
                                         yards_less_than = 5) {

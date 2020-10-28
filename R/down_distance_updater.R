@@ -7,6 +7,7 @@
 #' @param yards_to_go Number of yards to go until a first down or TD
 #' @param yards_from_own_goal The number of yards from the possession team's own goal
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
+#' @param ... Additional arguments for different strategies
 #'
 #' @return A data.frame object
 #' @export

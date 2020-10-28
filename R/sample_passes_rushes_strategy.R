@@ -27,6 +27,7 @@
 #' sample_passes_rushes_strategy(what_down = 3,
 #'                       yards_to_go = 2,
 #'                       yards_from_own_goal = 45,
+#'                       window_yards_from_own_goal = 2,
 #'                       play_by_play_data = reg_pbp_2018,
 #'                       prop_passes = 0.5)
 #' }
@@ -34,6 +35,7 @@
 sample_passes_rushes_strategy <- function(what_down,
                                           yards_to_go,
                                           yards_from_own_goal,
+                                          window_yards_from_own_goal = 1,
                                           play_by_play_data,
                                           prop_passes = 0.5) {
   if(what_down == 4){play <- play_by_play_data[!is.na(yfog) &

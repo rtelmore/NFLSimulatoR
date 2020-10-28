@@ -3,26 +3,25 @@
 #' @param n_sims The number of simulations
 #' @param from_yard_line The starting field position (defaults to 25)
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
-#' @param STRATEGY1 "normal", "passes_rushes", or "fourth_downs"
+#' @param strategy "normal", "passes_rushes", or "fourth_downs"
 #' @param single_drive TRUE indicates only a single drive
 #' @param progress logical for inclusion of a progress bar
-#'
+#' @param ... Additional arguments for different strategies
+#' 
 #' @return A data.frame of drives
 #'
 #' @export
 #' @examples
 #' \dontrun{
-#' sample_drives_until_score(2, 25, dt,
-#'                           STRATEGY1 = sample_play,
-#'                           STRATEGY2 = sample_play_go_for_it)
+#' sample_drives_until_score(2, 25, dt)
 #' }
 #'
 sample_drives_until_score <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
-                                      strategy1 = "normal",
-                                      progress = TRUE,
+                                      strategy = "normal",
                                       single_drive = FALSE,
+                                      progress = TRUE,
                                       ...){
   if(progress == TRUE){
     pb <- progress::progress_bar$new(
@@ -56,7 +55,7 @@ sample_drives_until_score <- function(n_sims,
                                       new_distance,
                                       new_yfog,
                                       play_by_play_data,
-                                      strategy = strategy1,
+                                      strategy = strategy,
                                       ...)
       } else {
         play <- down_distance_updater(new_down,
