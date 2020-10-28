@@ -1,4 +1,4 @@
-# nflsimulator <img src="man/figures/4thdownlogo.jpg" align="right" width = "120" />
+# nflsimulator 
 
 <!-- badges: start -->
   [![R build status](https://github.com/rtelmore/nflsimulator/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/nflsimulator/actions)
