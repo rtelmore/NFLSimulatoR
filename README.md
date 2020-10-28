@@ -1,5 +1,9 @@
 # nflsimulator <img src="man/figures/4thdownlogo.jpg" align="right" width = "120" />
 
+<!-- badges: start -->
+  [![R build status](https://github.com/rtelmore/nflsimulator/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/nflsimulator/actions)
+  <!-- badges: end -->
+  
 ### Overview
 **nflsimulator** is an R Package that provides an array of functions for sampling NFL data as well as testing various strategies fof fourth down decision making. 
 
