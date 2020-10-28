@@ -99,7 +99,12 @@ This should be primarily used within the `nflsimulator::sample_play()` function.
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/rtelmore/nflsimulator/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -114,7 +119,7 @@ This should be primarily used within the `nflsimulator::sample_play()` function.
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sample NFL play-by-play data with a specified blend of rushing and passing</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/rtelmore/nflsimulator/blob/master/R/sample_passes_rushes_strategy.R'><code>R/sample_passes_rushes_strategy.R</code></a></small>
     <div class="hidden name"><code>sample_passes_rushes_strategy.Rd</code></div>
     </div>
 
@@ -133,6 +138,7 @@ This should be primarily used within the `nflsimulator::sample_play()` function.
   <span class='va'>what_down</span>,
   <span class='va'>yards_to_go</span>,
   <span class='va'>yards_from_own_goal</span>,
+  window_yards_from_own_goal <span class='op'>=</span> <span class='fl'>1</span>,
   <span class='va'>play_by_play_data</span>,
   prop_passes <span class='op'>=</span> <span class='fl'>0.5</span>
 <span class='op'>)</span></pre>
@@ -153,17 +159,17 @@ This should be primarily used within the `nflsimulator::sample_play()` function.
       <td><p>The number of yards from the possession team's own goal</p></td>
     </tr>
     <tr>
+      <th>window_yards_from_own_goal</th>
+      <td><p>Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
+will occur within plus or minus 1 of the "yards_from_own_goal" value)</p></td>
+    </tr>
+    <tr>
       <th>play_by_play_data</th>
       <td><p>A data file from nflscrapR prepped using the prep_pbp_data.R function</p></td>
     </tr>
     <tr>
       <th>prop_passes</th>
       <td><p>Proportion of plays that should be pass plays, between 0 and 1, inclusive</p></td>
-    </tr>
-    <tr>
-      <th>window_yards_from_own_goal</th>
-      <td><p>Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
-will occur within plus or minus 1 of the "yards_from_own_goal" value)</p></td>
     </tr>
     </table>
 
@@ -176,6 +182,7 @@ will occur within plus or minus 1 of the "yards_from_own_goal" value)</p></td>
 <span class='fu'>sample_passes_rushes_strategy</span><span class='op'>(</span>what_down <span class='op'>=</span> <span class='fl'>3</span>,
                       yards_to_go <span class='op'>=</span> <span class='fl'>2</span>,
                       yards_from_own_goal <span class='op'>=</span> <span class='fl'>45</span>,
+                      window_yards_from_own_goal <span class='op'>=</span> <span class='fl'>2</span>,
                       play_by_play_data <span class='op'>=</span> <span class='va'>reg_pbp_2018</span>,
                       prop_passes <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 <span class='op'>}</span>

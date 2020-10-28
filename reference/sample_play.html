@@ -94,7 +94,12 @@ usual NFL-coaching strategy." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/rtelmore/nflsimulator/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -109,7 +114,7 @@ usual NFL-coaching strategy." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sample one NFL play according to some strategy</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/rtelmore/nflsimulator/blob/master/R/sample_play.R'><code>R/sample_play.R</code></a></small>
     <div class="hidden name"><code>sample_play.Rd</code></div>
     </div>
 
@@ -157,6 +162,10 @@ will occur within plus or minus 1 of the "yards_from_own_goal" value)</p></td>
       <th>strategy</th>
       <td><p>A string describing the strategy to be used, default is "normal", others include: "fourth_downs" and "passes_rushes" 
 which implement some strategy regarding 4th downs and proportion of plays that are passing plays, respectively.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments for different strategies</p></td>
     </tr>
     </table>
 

@@ -95,7 +95,12 @@ used within the `nflsimulator::sample_play()` function." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/rtelmore/nflsimulator/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -110,7 +115,7 @@ used within the `nflsimulator::sample_play()` function." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Decision for 4th downs based on expected points</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/rtelmore/nflsimulator/blob/master/R/expected_pts_fourth.R'><code>R/expected_pts_fourth.R</code></a></small>
     <div class="hidden name"><code>expected_pts_fourth.Rd</code></div>
     </div>
 
@@ -121,7 +126,7 @@ used within the `nflsimulator::sample_play()` function." />
 used within the `nflsimulator::sample_play()` function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expected_pts_fourth</span><span class='op'>(</span><span class='va'>yards_from_goal</span>, <span class='va'>yds_to_go</span>, <span class='va'>play_data</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>expected_pts_fourth</span><span class='op'>(</span><span class='va'>yards_from_goal</span>, <span class='va'>yards_to_go</span>, <span class='va'>play_data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,15 +136,11 @@ used within the `nflsimulator::sample_play()` function.</p>
       <td><p>The number of yards until a team scores a touchdown</p></td>
     </tr>
     <tr>
-      <th>what_down</th>
-      <td><p>The current down (1st, 2nd, 3rd, or 4th down)</p></td>
-    </tr>
-    <tr>
       <th>yards_to_go</th>
       <td><p>Number of yards to go until a first down or TD</p></td>
     </tr>
     <tr>
-      <th>play_by_play_data</th>
+      <th>play_data</th>
       <td><p>A data file from nflscrapR prepped using the prep_pbp_data.R function</p></td>
     </tr>
     </table>

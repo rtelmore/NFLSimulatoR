@@ -92,7 +92,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/rtelmore/nflsimulator/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -107,7 +112,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sample a Series of Drives Until a Score, a strategy to test verses the normal strategy</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/rtelmore/nflsimulator/blob/master/R/sample_drives_until_score.R'><code>R/sample_drives_until_score.R</code></a></small>
     <div class="hidden name"><code>sample_drives_until_score.Rd</code></div>
     </div>
 
@@ -119,9 +124,9 @@
   <span class='va'>n_sims</span>,
   from_yard_line <span class='op'>=</span> <span class='fl'>25</span>,
   <span class='va'>play_by_play_data</span>,
-  strategy1 <span class='op'>=</span> <span class='st'>"normal"</span>,
-  progress <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  strategy <span class='op'>=</span> <span class='st'>"normal"</span>,
   single_drive <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  progress <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -141,16 +146,20 @@
       <td><p>A data file from nflscrapR prepped using the prep_pbp_data.R function</p></td>
     </tr>
     <tr>
-      <th>progress</th>
-      <td><p>logical for inclusion of a progress bar</p></td>
+      <th>strategy</th>
+      <td><p>"normal", "passes_rushes", or "fourth_downs"</p></td>
     </tr>
     <tr>
       <th>single_drive</th>
       <td><p>TRUE indicates only a single drive</p></td>
     </tr>
     <tr>
-      <th>STRATEGY1</th>
-      <td><p>"normal", "passes_rushes", or "fourth_downs"</p></td>
+      <th>progress</th>
+      <td><p>logical for inclusion of a progress bar</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments for different strategies</p></td>
     </tr>
     </table>
 
@@ -160,9 +169,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>sample_drives_until_score</span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>25</span>, <span class='va'>dt</span>,
-                          STRATEGY1 <span class='op'>=</span> <span class='va'>sample_play</span>,
-                          STRATEGY2 <span class='op'>=</span> <span class='va'>sample_play_go_for_it</span><span class='op'>)</span>
+<span class='fu'>sample_drives_until_score</span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>25</span>, <span class='va'>dt</span><span class='op'>)</span>
 <span class='op'>}</span>
 
 </div></pre>

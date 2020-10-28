@@ -98,7 +98,12 @@ used within the `nflsimulator::sample_play()` function." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/rtelmore/nflsimulator/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -113,7 +118,7 @@ used within the `nflsimulator::sample_play()` function." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sample NFL play-by-play data with a specified 4th down strategy</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/rtelmore/nflsimulator/blob/master/R/sample_fourth_down_strategy.R'><code>R/sample_fourth_down_strategy.R</code></a></small>
     <div class="hidden name"><code>sample_fourth_down_strategy.Rd</code></div>
     </div>
 
@@ -131,6 +136,7 @@ used within the `nflsimulator::sample_play()` function.</p>
   <span class='va'>what_down</span>,
   <span class='va'>yards_to_go</span>,
   <span class='va'>yards_from_own_goal</span>,
+  window_yards_from_own_goal <span class='op'>=</span> <span class='fl'>1</span>,
   <span class='va'>play_by_play_data</span>,
   strat <span class='op'>=</span> <span class='st'>"empirical"</span>,
   yards_less_than <span class='op'>=</span> <span class='fl'>5</span>
@@ -152,6 +158,11 @@ used within the `nflsimulator::sample_play()` function.</p>
       <td><p>The number of yards from the possession team's own goal</p></td>
     </tr>
     <tr>
+      <th>window_yards_from_own_goal</th>
+      <td><p>Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
+will occur within plus or minus 1 of the "yards_from_own_goal" value)</p></td>
+    </tr>
+    <tr>
       <th>play_by_play_data</th>
       <td><p>A data file from nflscrapR prepped using the prep_pbp_data.R function</p></td>
     </tr>
@@ -162,11 +173,6 @@ used within the `nflsimulator::sample_play()` function.</p>
     <tr>
       <th>yards_less_than</th>
       <td><p>Parameter for `yds_less_than` strategy. If using `yds_less_than strategy` and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down</p></td>
-    </tr>
-    <tr>
-      <th>window_yards_from_own_goal</th>
-      <td><p>Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
-will occur within plus or minus 1 of the "yards_from_own_goal" value)</p></td>
     </tr>
     </table>
 
@@ -179,6 +185,7 @@ will occur within plus or minus 1 of the "yards_from_own_goal" value)</p></td>
 <span class='fu'>sample_fourth_down_strategy</span><span class='op'>(</span>what_down <span class='op'>=</span> <span class='fl'>3</span>,
                       yards_to_go <span class='op'>=</span> <span class='fl'>2</span>,
                       yards_from_own_goal <span class='op'>=</span> <span class='fl'>45</span>,
+                      window_yards_from_own_goal <span class='op'>=</span> <span class='fl'>2</span>,
                       play_by_play_data <span class='op'>=</span> <span class='va'>reg_pbp_2018</span>,
                       strat <span class='op'>=</span> <span class='st'>"empirical"</span><span class='op'>)</span>
 <span class='op'>}</span>
