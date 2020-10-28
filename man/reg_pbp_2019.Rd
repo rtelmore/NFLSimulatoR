@@ -3,7 +3,7 @@
 \docType{data}
 \name{reg_pbp_2019}
 \alias{reg_pbp_2019}
-\title{NFL Play-by-Play Data 2018}
+\title{NFL Play-by-Play Data 2019}
 \format{
 A data frame with 45546 rows and 256 variables:
 \describe{
@@ -23,6 +23,6 @@ reg_pbp_2019
 }
 \description{
 A dataset containing the 256 attributes associated with 45546 plays in the
-NFL from the 2018 regular season. The data were obtained using the nflscrapR package.
+NFL from the 2019 regular season. The data were obtained using the nflscrapR package.
 }
 \keyword{datasets}

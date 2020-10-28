@@ -28,6 +28,8 @@ will occur within plus or minus 1 of the "yards_from_own_goal" value)}
 
 \item{strategy}{A string describing the strategy to be used, default is "normal", others include: "fourth_downs" and "passes_rushes" 
 which implement some strategy regarding 4th downs and proportion of plays that are passing plays, respectively.}
+
+\item{...}{Additional arguments for different strategies}
 }
 \value{
 A tibble containing lots of info

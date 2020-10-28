@@ -4,16 +4,14 @@
 \alias{expected_pts_fourth}
 \title{Decision for 4th downs based on expected points}
 \usage{
-expected_pts_fourth(yards_from_goal, yds_to_go, play_data)
+expected_pts_fourth(yards_from_goal, yards_to_go, play_data)
 }
 \arguments{
 \item{yards_from_goal}{The number of yards until a team scores a touchdown}
 
-\item{what_down}{The current down (1st, 2nd, 3rd, or 4th down)}
-
 \item{yards_to_go}{Number of yards to go until a first down or TD}
 
-\item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
+\item{play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 }
 \value{
 A data.frame of the expected points of three fourth down options

@@ -8,9 +8,9 @@ sample_drives_until_score(
   n_sims,
   from_yard_line = 25,
   play_by_play_data,
-  strategy1 = "normal",
-  progress = TRUE,
+  strategy = "normal",
   single_drive = FALSE,
+  progress = TRUE,
   ...
 )
 }
@@ -21,11 +21,13 @@ sample_drives_until_score(
 
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 
-\item{progress}{logical for inclusion of a progress bar}
+\item{strategy}{"normal", "passes_rushes", or "fourth_downs"}
 
 \item{single_drive}{TRUE indicates only a single drive}
 
-\item{STRATEGY1}{"normal", "passes_rushes", or "fourth_downs"}
+\item{progress}{logical for inclusion of a progress bar}
+
+\item{...}{Additional arguments for different strategies}
 }
 \value{
 A data.frame of drives
@@ -35,9 +37,7 @@ Sample a Series of Drives Until a Score, a strategy to test verses the normal st
 }
 \examples{
 \dontrun{
-sample_drives_until_score(2, 25, dt,
-                          STRATEGY1 = sample_play,
-                          STRATEGY2 = sample_play_go_for_it)
+sample_drives_until_score(2, 25, dt)
 }
 
 }
