@@ -13,7 +13,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
     data.table,
-    dplyr,
     progress
 LazyData: true
 Depends: 
