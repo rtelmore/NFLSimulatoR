@@ -48,7 +48,7 @@ down_distance_updater <- function(what_down,
   yard_line <- play$yardline_100
   yards_gained <- play$yards_gained
 
-  if(play$punt_attempt == 1){
+  if(play$punt_attempt !=0 & !is.na(play$punt_attempt)){
     if(play$punt_blocked == 1){
       new_yfog <- yards_from_own_goal
     } else if(!is.na(play$touchback) & (play$touchback != 0)){
