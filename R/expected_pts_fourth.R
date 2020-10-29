@@ -25,7 +25,13 @@
 expected_pts_fourth <- function(yards_from_goal,
                                 yards_to_go,
                                 play_data){
-  if (yards_to_go >= 20){yards_to_go <- 20}
+  
+  ## Non-standard eval initialization for data.table
+  opp_yard_line <- yardline_100 <- yards_gained <- play_type <- down <- ydstogo <- NULL
+  
+  if (yards_to_go >= 20){
+    yards_to_go <- 20
+  }
   
   #go for it expected value
   p_gain <-

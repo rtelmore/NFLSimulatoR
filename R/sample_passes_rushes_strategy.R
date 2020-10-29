@@ -38,6 +38,10 @@ sample_passes_rushes_strategy <- function(what_down,
                                           window_yards_from_own_goal = 1,
                                           play_by_play_data,
                                           prop_passes = 0.5) {
+  
+  ## Non-standard eval initialization for data.table
+  yfog <- play_type <- down <- ydstogo <- NULL
+  
   if(what_down == 4){play <- play_by_play_data[!is.na(yfog) &
                                                  !play_type %in% c("NA",
                                                                    "no_play",
@@ -64,7 +68,7 @@ sample_passes_rushes_strategy <- function(what_down,
   return(play)
   }
   
-  else if (runif(1) < prop_passes) {
+  else if (stats::runif(1) < prop_passes) {
     play <- play_by_play_data[!is.na(yfog) &
                                 !play_type %in% c("NA",
                                                   "no_play",

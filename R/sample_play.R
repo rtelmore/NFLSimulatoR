@@ -36,6 +36,10 @@ sample_play <- function(what_down,
                              play_by_play_data,
                              strategy = "normal",
                              ...) {
+
+  ## Non-standard eval initialization for data.table
+  yfog <- play_type <- down <- ydstogo <- NULL
+  
   # Normal strategy
   if (strategy == "normal") {
     play <- play_by_play_data[!is.na(yfog) &

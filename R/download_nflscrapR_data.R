@@ -25,5 +25,5 @@ download_nflscrapR_data <- function(type = "regular", year){
                abbv, "_pbp_", 
                year, ".csv", 
                sep = "")
-  df <- read.csv(url)
+  df <- utils::read.csv(url)
 }
