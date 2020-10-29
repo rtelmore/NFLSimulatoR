@@ -27,7 +27,8 @@ expected_pts_fourth <- function(yards_from_goal,
                                 play_data){
   
   ## Non-standard eval initialization for data.table
-  opp_yard_line <- yardline_100 <- yards_gained <- play_type <- down <- ydstogo <- NULL
+  opp_yard_line <- yardline_100 <- yards_gained <- play_type <- down <- NULL
+  ydstogo <- touchback <- kick_distance <- return_yards <- NULL
   
   if (yards_to_go >= 20){
     yards_to_go <- 20
@@ -94,11 +95,11 @@ expected_pts_fourth <- function(yards_from_goal,
                                            yards_from_goal + 1, 
                                            yards_from_goal - 1) &
                          play_type == "punt"]
-  df_punt[, opp_yard_line := ifelse(df_punt$touchback == 1, 
+  df_punt[, opp_yard_line := ifelse(touchback == 1, 
                                     75, 
-                                    -1*(df_punt$yardline_100 - 
-                                          df_punt$kick_distance - 100 + 
-                                          df_punt$return_yards))]
+                                    -1*(yardline_100 - 
+                                          kick_distance - 100 + 
+                                          return_yards))]
   avg_opp_ydln <- round(mean(df_punt$opp_yard_line, na.rm = TRUE))
   df_punt_opp <- play_data[yardline_100 == avg_opp_ydln &
                              down==1 &
