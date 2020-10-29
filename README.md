@@ -1,4 +1,5 @@
 # nflsimulator 
+R Package for simulating drives in the NFL using NFLScrapR data.
 
 <!-- badges: start -->
   [![R build status](https://github.com/rtelmore/nflsimulator/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/nflsimulator/actions)
