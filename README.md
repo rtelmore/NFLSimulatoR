@@ -1,4 +1,4 @@
-# nflsimulator 
+# NFLSimulatoR 
 R Package for simulating drives in the NFL using NFLScrapR data.
 
 <!-- badges: start -->
