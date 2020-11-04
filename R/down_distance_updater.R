@@ -38,17 +38,34 @@ down_distance_updater <- function(what_down,
                 yards_from_own_goal,
                 play_by_play_data = play_by_play_data,
                 ...)
-    if(any(is.na(play$desc),identical(play$desc, character(0)))){
+    if(any(is.na(play$desc), identical(play$desc, character(0)))){
       play_success <- FALSE
-      #yards_from_own_goal <- yards_from_own_goal + 1
-      yards_from_own_goal <- min(99,yards_from_own_goal + sample(c(1,-1,2,-2),size = 1))
+      yards_from_own_goal <- min(99, yards_from_own_goal + 
+                                   sample(c(1, -1, 2, -2), size = 1))
     } else play_success <- TRUE
   }
-
+  
+  ## Fix the issue with penalties
+  next_play_no_play <- FALSE
+  if (play$play_type == "no_play") {
+    while (!next_play_no_play) {
+      tmp <- play_by_play_data[game_id == play$game_id & 
+                                 play_id > play$play_id, ][1, ] 
+      play <- tmp
+      if (play$play_type != "no_play") {
+        next_play_no_play <- TRUE
+      }
+    }
+    ## Update yfog, ydl, etc.
+    yards_from_own_goal <- play$yardline_100
+    yards_to_go <- ydstogo
+    what_down <- down
+  }
+  
   yard_line <- play$yardline_100
   yards_gained <- play$yards_gained
 
-  if(play$punt_attempt !=0 & !is.na(play$punt_attempt)){
+  if(play$punt_attempt != 0 & !is.na(play$punt_attempt)){
     if(play$punt_blocked == 1){
       new_yfog <- yards_from_own_goal
     } else if(!is.na(play$touchback) & (play$touchback != 0)){
@@ -64,13 +81,11 @@ down_distance_updater <- function(what_down,
     new_yfog <- yards_from_own_goal + yards_gained
   }
 
-  # new_yfog <- yards_from_own_goal + yards_gained
   new_distance <- ifelse(yards_gained >= yards_to_go & new_yfog <= 90,
                          10,
                          ifelse(yards_gained >= yards_to_go & new_yfog > 90,
                                 100 - new_yfog,
                                 yards_to_go - yards_gained))
-  # desc <- play$desc
   new_yard_line <- yard_line - yards_gained
   new_down <- ifelse(yards_gained >= yards_to_go,
                      1,
