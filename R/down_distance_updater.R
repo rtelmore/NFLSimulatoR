@@ -78,7 +78,7 @@ down_distance_updater <- function(what_down,
       }
     }
   } else{
-    new_yfog <- yards_from_own_goal + yards_gained
+    new_yfog <- min(100, yards_from_own_goal + yards_gained)
   }
 
   new_distance <- ifelse(yards_gained >= yards_to_go & new_yfog <= 90,
