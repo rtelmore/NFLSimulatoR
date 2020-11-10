@@ -6,7 +6,7 @@
 #' going for it on fourth down, never going for it on fourth down, go for it 
 #' if one is less than a certain distance from a first down/touchdown,
 #' and go for it if it maximizes one's expected points. This should be primarily
-#' used within the `nflsimulator::sample_play()` function.
+#' used within the `NFLSimulatoR::sample_play()` function.
 #'
 #' @param what_down The current down (1st, 2nd, 3rd, or 4th down)
 #' @param yards_to_go Number of yards to go until a first down or TD

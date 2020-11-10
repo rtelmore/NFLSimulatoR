@@ -3,7 +3,7 @@
 #' This function will return the expected points for several 
 #' 4th down decision. The options are "go for it",
 #' "field goal", or "punt".  This should be primarily
-#' used within the `nflsimulator::sample_play()` function.
+#' used within the `NFLSimulatoR::sample_play()` function.
 #'
 #' @param yards_from_goal The number of yards until a team scores a touchdown
 #' @param yards_to_go Number of yards to go until a first down or TD

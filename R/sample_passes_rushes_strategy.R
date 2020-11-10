@@ -7,7 +7,7 @@
 #' in which the team always passes, always runs, or some distribution of the two.
 #' This strategy is only intended for downs 1 - 3, and uses an empirical strategy 
 #' for fourth downs.
-#' This should be primarily used within the `nflsimulator::sample_play()` function.
+#' This should be primarily used within the `NFLSimulatoR::sample_play()` function.
 #'
 #' @param what_down The current down (1st, 2nd, 3rd, or 4th down)
 #' @param yards_to_go Number of yards to go until a first down or TD

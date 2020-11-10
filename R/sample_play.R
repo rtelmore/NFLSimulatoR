@@ -67,7 +67,7 @@ sample_play <- function(what_down,
    return(play)
     }
   else if (strategy == "passes_rushes") {
-      play <- nflsimulator::sample_passes_rushes_strategy(
+      play <- NFLSimulatoR::sample_passes_rushes_strategy(
         what_down = what_down,
         yards_to_go = yards_to_go,
         yards_from_own_goal = yards_from_own_goal,
@@ -77,7 +77,7 @@ sample_play <- function(what_down,
     return(play)
   }
   else if (strategy == "fourth_downs") {
-    play <- nflsimulator::sample_fourth_down_strategy(
+    play <- NFLSimulatoR::sample_fourth_down_strategy(
       what_down = what_down,
       yards_to_go = yards_to_go,
       yards_from_own_goal = yards_from_own_goal,
