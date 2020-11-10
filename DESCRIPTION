@@ -1,4 +1,4 @@
-Package: nflsimulator
+Package: NFLSimulatoR
 Type: Package
 Title: Simulating NFL Drives using NFLScrapR Data
 Version: 0.1.0
@@ -18,5 +18,5 @@ LazyData: true
 Depends: 
     R (>= 3.5.0)
 RoxygenNote: 7.1.1
-URL: https://github.com/rtelmore/nflsimulator
-BugReports: https://github.com/rtelmore/nflsimulator/issues
+URL: https://github.com/rtelmore/NFLSimulatoR
+BugReports: https://github.com/rtelmore/NFLSimulatoR/issues

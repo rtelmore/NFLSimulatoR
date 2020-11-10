@@ -2,11 +2,11 @@
 R Package for simulating drives in the NFL using NFLScrapR data.
 
 <!-- badges: start -->
-  [![R build status](https://github.com/rtelmore/nflsimulator/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/nflsimulator/actions)
+  [![R build status](https://github.com/rtelmore/NFLSimulatoR/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/NFLSimulatoR/actions)
   <!-- badges: end -->
 
 ## Website  
-The NFLSimulatoR package website is hosted at [datacolorado.com/nflsimulator](http://datacolorado.com/nflsimulator).
+The NFLSimulatoR package website is hosted at [datacolorado.com/NFLSimulatoR](http://datacolorado.com/NFLSimulatoR).
 
 ### Overview
 **NFLSimulatoR** is an R Package that provides an array of functions for sampling NFL data as well as testing various strategies fof fourth down decision making. 
