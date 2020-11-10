@@ -26,6 +26,9 @@ down_distance_updater <- function(what_down,
                                   yards_from_own_goal,
                                   play_by_play_data,
                                   ...){
+  
+  game_id <- play_id <- ydstogo <- down <- NULL
+  
   # down_original <- what_down
   if (yards_from_own_goal <= 5){yards_from_own_goal <- 5}
   if (yards_from_own_goal > 90){yards_to_go = 100 - yards_from_own_goal}
