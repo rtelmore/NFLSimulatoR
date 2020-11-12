@@ -1,14 +1,16 @@
 Package: NFLSimulatoR
 Type: Package
-Title: Simulating NFL Drives using NFLScrapR Data
+Title: An R Package for Simulating Plays and Drives in the NFL
 Version: 0.1.0
 Authors@R: c(
     person("Ryan", "Elmore", email = "Ryan.Elmore@du.edu", role = c("cre", "aut")),
     person("Ben", "Williams", email = "Benjamin.Williams@du.edu", role = "aut"),
     person("Will", "Palmquist", email = "Will.Palmquist@du.edu", role = "aut"))
 Maintainer: Ryan Elmore <Ryan.Elmore@du.edu>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: NFLSimulatoR (version 0.1.0) is an R package [@r] that enables the simulation 
+and evaluation of game-play strategies in the National Football League (NFL). 
+The package itself is inspired by a blog post by Mike Lopez, currently the 
+Director of Data and Analytics at the NFL.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:

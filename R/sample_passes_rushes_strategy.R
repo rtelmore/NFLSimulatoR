@@ -25,11 +25,11 @@
 #' @examples
 #' \dontrun{
 #' sample_passes_rushes_strategy(what_down = 3,
-#'                       yards_to_go = 2,
-#'                       yards_from_own_goal = 45,
-#'                       window_yards_from_own_goal = 2,
-#'                       play_by_play_data = reg_pbp_2018,
-#'                       prop_passes = 0.5)
+#'                               yards_to_go = 2,
+#'                               yards_from_own_goal = 45,
+#'                               window_yards_from_own_goal = 2,
+#'                               play_by_play_data = reg_pbp_2018,
+#'                               prop_passes = 0.5)
 #' }
 
 sample_passes_rushes_strategy <- function(what_down,

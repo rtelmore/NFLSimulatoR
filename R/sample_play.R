@@ -23,10 +23,10 @@
 #' @examples
 #' \dontrun{
 #' sample_play_test(what_down = 3,
-#'             yards_to_go = 2,
-#'             yards_from_own_goal = 45,
-#'             play_by_play_data = pbp_data,
-#'             strategy = "normal")
+#'                  yards_to_go = 2,
+#'                  yards_from_own_goal = 45,
+#'                  play_by_play_data = pbp_data,
+#'                  strategy = "normal")
 #' }
 
 sample_play <- function(what_down,

@@ -20,13 +20,13 @@ A data.frame of the expected points of three fourth down options
 This function will return the expected points for several 
 4th down decision. The options are "go for it",
 "field goal", or "punt".  This should be primarily
-used within the `nflsimulator::sample_play()` function.
+used within the `NFLSimulatoR::sample_play()` function.
 }
 \examples{
 \dontrun{
-expected_pts_fourth(what_down = 4,
-                      yards_to_go = 5,
-                      yards_from_own_goal = 45,
+expected_pts_fourth(what_down = 1,
+                      yards_to_go = 10,
+                      yards_from_own_goal = 25,
                       play_by_play_data = reg_pbp_2018)
 }
 }

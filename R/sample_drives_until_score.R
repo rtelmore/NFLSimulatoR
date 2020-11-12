@@ -51,19 +51,19 @@ sample_drives_until_score <- function(n_sims,
         new_distance <- 100 - new_yfog
       }
       if((drive_counter %% 2) == 1){
-        play <- down_distance_updater(new_down,
-                                      new_distance,
-                                      new_yfog,
-                                      play_by_play_data,
-                                      strategy = strategy,
-                                      ...)
+        play <- NFLSimulatoR::down_distance_updater(new_down,
+                                                    new_distance,
+                                                    new_yfog,
+                                                    play_by_play_data,
+                                                    strategy = strategy,
+                                                    ...)
       } else {
-        play <- down_distance_updater(new_down,
-                                      new_distance,
-                                      new_yfog,
-                                      play_by_play_data,
-                                      strategy = "normal",
-                                      ...)
+        play <- NFLSimulatoR::down_distance_updater(new_down,
+                                                    new_distance,
+                                                    new_yfog,
+                                                    play_by_play_data,
+                                                    strategy = "normal",
+                                                    ...)
       }
       play$drive_counter <- drive_counter
       play$play_num <- play_num

@@ -40,7 +40,7 @@ a given strategy on fourth down. The strategies are: empirical, always
 going for it on fourth down, never going for it on fourth down, go for it 
 if one is less than a certain distance from a first down/touchdown,
 and go for it if it maximizes one's expected points. This should be primarily
-used within the `nflsimulator::sample_play()` function.
+used within the `NFLSimulatoR::sample_play()` function.
 }
 \examples{
 \dontrun{

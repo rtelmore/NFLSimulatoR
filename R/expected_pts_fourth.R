@@ -16,9 +16,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' expected_pts_fourth(what_down = 4,
-#'                       yards_to_go = 5,
-#'                       yards_from_own_goal = 45,
+#' expected_pts_fourth(what_down = 1,
+#'                       yards_to_go = 10,
+#'                       yards_from_own_goal = 25,
 #'                       play_by_play_data = reg_pbp_2018)
 #' }
 

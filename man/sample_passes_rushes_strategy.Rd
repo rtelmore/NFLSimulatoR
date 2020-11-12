@@ -38,15 +38,15 @@ proportion of passing plays to be sampled. Thus one can test strategies
 in which the team always passes, always runs, or some distribution of the two.
 This strategy is only intended for downs 1 - 3, and uses an empirical strategy 
 for fourth downs.
-This should be primarily used within the `nflsimulator::sample_play()` function.
+This should be primarily used within the `NFLSimulatoR::sample_play()` function.
 }
 \examples{
 \dontrun{
 sample_passes_rushes_strategy(what_down = 3,
-                      yards_to_go = 2,
-                      yards_from_own_goal = 45,
-                      window_yards_from_own_goal = 2,
-                      play_by_play_data = reg_pbp_2018,
-                      prop_passes = 0.5)
+                              yards_to_go = 2,
+                              yards_from_own_goal = 45,
+                              window_yards_from_own_goal = 2,
+                              play_by_play_data = reg_pbp_2018,
+                              prop_passes = 0.5)
 }
 }

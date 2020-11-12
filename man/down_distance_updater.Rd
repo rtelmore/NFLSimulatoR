@@ -32,9 +32,9 @@ statistics accordingly.
 }
 \examples{
 \dontrun{
-down_distance_updater(what_down = 3,
-                      yards_to_go = 2,
-                      yards_from_own_goal = 45,
+down_distance_updater(what_down = 1,
+                      yards_to_go = 10,
+                      yards_from_own_goal = 25,
                       play_by_play_data = pbp_data,
                       strategy = "normal")
 } 
