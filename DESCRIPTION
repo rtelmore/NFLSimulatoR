@@ -20,5 +20,5 @@ LazyData: true
 Depends: 
     R (>= 3.5.0)
 RoxygenNote: 7.1.1
-URL: https://github.com/rtelmore/NFLSimulatoR
-BugReports: https://github.com/rtelmore/NFLSimulatoR/issues
+URL: https://github.com/rtelmore/NFLSimulatoR/
+BugReports: https://github.com/rtelmore/NFLSimulatoR/issues/

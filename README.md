@@ -2,11 +2,11 @@
 An R Package for simulating plays and drives in the NFL.
 
 <!-- badges: start -->
-  [![R build status](https://github.com/rtelmore/NFLSimulatoR/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/NFLSimulatoR/actions)
+  [![R build status](https://github.com/rtelmore/NFLSimulatoR/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/NFLSimulatoR/actions/)
   <!-- badges: end -->
 
 ## Website  
-The NFLSimulatoR package website is hosted at [datacolorado.com/NFLSimulatoR](http://datacolorado.com/NFLSimulatoR).
+The NFLSimulatoR package website is hosted at [datacolorado.com/NFLSimulatoR](https://datacolorado.com/NFLSimulatoR/).
 
 ### Overview
 NFLSimulatoR (version 0.1.0) is an R package that enables the simulation of 
@@ -21,5 +21,5 @@ upcoming paper related to use cases
 
 ### Resources
 
-* [Open an issue](https://github.com/rtelmore/NFLSimulatoR/issues) (GitHub issues for bug reports, feature requests)
+* [Open an issue](https://github.com/rtelmore/NFLSimulatoR/issues/) (GitHub issues for bug reports, feature requests)
 

@@ -12,3 +12,4 @@
 ^apa\.csl$
 ^paper\.*
 ^tmp$
+%README\.md$
