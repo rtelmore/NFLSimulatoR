@@ -43,7 +43,7 @@
 <meta property="og:description" content="This function will return the expected points for several 
 4th down decision. The options are &quot;go for it&quot;,
 &quot;field goal&quot;, or &quot;punt&quot;.  This should be primarily
-used within the `nflsimulator::sample_play()` function." />
+used within the `NFLSimulatoR::sample_play()` function." />
 
 
 
@@ -123,7 +123,7 @@ used within the `nflsimulator::sample_play()` function." />
     <p>This function will return the expected points for several 
 4th down decision. The options are "go for it",
 "field goal", or "punt".  This should be primarily
-used within the `nflsimulator::sample_play()` function.</p>
+used within the `NFLSimulatoR::sample_play()` function.</p>
     </div>
 
     <pre class="usage"><span class='fu'>expected_pts_fourth</span><span class='op'>(</span><span class='va'>yards_from_goal</span>, <span class='va'>yards_to_go</span>, <span class='va'>play_data</span><span class='op'>)</span></pre>
@@ -151,9 +151,9 @@ used within the `nflsimulator::sample_play()` function.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>expected_pts_fourth</span><span class='op'>(</span>what_down <span class='op'>=</span> <span class='fl'>4</span>,
-                      yards_to_go <span class='op'>=</span> <span class='fl'>5</span>,
-                      yards_from_own_goal <span class='op'>=</span> <span class='fl'>45</span>,
+<span class='fu'>expected_pts_fourth</span><span class='op'>(</span>what_down <span class='op'>=</span> <span class='fl'>1</span>,
+                      yards_to_go <span class='op'>=</span> <span class='fl'>10</span>,
+                      yards_from_own_goal <span class='op'>=</span> <span class='fl'>25</span>,
                       play_by_play_data <span class='op'>=</span> <span class='va'>reg_pbp_2018</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
