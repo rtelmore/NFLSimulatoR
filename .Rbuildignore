@@ -8,3 +8,7 @@
 ^pkgdown$
 ^\.github$
 ^CRAN-RELEASE$
+^cran-comments\.md$
+^apa\.csl$
+^paper\.*
+^tmp$

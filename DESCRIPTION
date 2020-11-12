@@ -3,12 +3,12 @@ Type: Package
 Title: An R Package for Simulating Plays and Drives in the NFL
 Version: 0.1.0
 Authors@R: c(
-    person("Ryan", "Elmore", email = "Ryan.Elmore@du.edu", role = c("cre", "aut")),
-    person("Ben", "Williams", email = "Benjamin.Williams@du.edu", role = "aut"),
-    person("Will", "Palmquist", email = "Will.Palmquist@du.edu", role = "aut"))
+    person("Ryan", "Elmore", email = "Ryan.Elmore@du.edu", role = c("cre", "aut"), comment = c(ORCID = "0000-0002-0092-4532")),
+    person("Ben", "Williams", email = "Benjamin.Williams@du.edu", role = "aut", comment = c(ORCID = "0000-0002-6100-0923")),
+    person("Will", "Palmquist", email = "Will.Palmquist@du.edu", role = "aut", comment = c(ORCID = "0000-0001-8474-5066")))
 Maintainer: Ryan Elmore <Ryan.Elmore@du.edu>
-Description: NFLSimulatoR (version 0.1.0) is an R package that enables the simulation 
-    and evaluation of game-play strategies in the National Football League (NFL). 
+Description: The intent here is to enable the simulation of plays/drives and
+    evaluate game-play strategies in the National Football League (NFL). 
     The package itself is inspired by a blog post by Mike Lopez, currently the 
     Director of Data and Analytics at the NFL.
 License: MIT + file LICENSE

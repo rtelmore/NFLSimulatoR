@@ -8,5 +8,4 @@
 * Ubuntu (on github), R devel
 
 ## R CMD check results
-There were no ERRORs or WARNINGs, and one NOTE (files in top-level directory).
-
+There were no ERRORs, WARNINGs, or NOTEs
