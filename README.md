@@ -2,10 +2,10 @@
 An R Package for simulating plays and drives in the NFL.
 
 <!-- badges: start -->
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R build status](https://github.com/rtelmore/NFLSimulatoR/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/NFLSimulatoR/actions/)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ballr)](https://cran.r-project.org/package=NFLSimulatoR)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/NFLSimulatoR)](http://www.r-pkg.org/pkg/NFLSimulatoR)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ballr)](https://cran.r-project.org/package=NFLSimulatoR)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/NFLSimulatoR)](https://www.r-pkg.org/pkg/NFLSimulatoR)
 
   <!-- badges: end -->
 
