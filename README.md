@@ -10,7 +10,7 @@ An R Package for simulating plays and drives in the NFL.
   <!-- badges: end -->
 
 ## Website  
-The NFLSimulatoR package website is hosted at [datacolorado.com/NFLSimulatoR](https://datacolorado.com/NFLSimulatoR/).
+The NFLSimulatoR package website is hosted at [https://datacolorado.com/r/NFLSimulatoR](https://datacolorado.com/r/NFLSimulatoR/).
 
 ### Overview
 NFLSimulatoR (version 0.1.0) is an R package that enables the simulation of 
