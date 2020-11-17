@@ -1,4 +1,6 @@
-## First submission to CRAN (12 Nov 2020)
+## First submission to CRAN (17 Nov 2020)
+
+* Fixed the link issue in readme
 
 ## Test environments
 * local OS X install, R 4.0.3 
