@@ -9,6 +9,9 @@ on:
     branches:
       - main
       - master
+    paths-ignore:
+      - *.md
+      - *.Rmd
   pull_request:
     branches:
       - main

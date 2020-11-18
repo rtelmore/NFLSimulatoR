@@ -34,7 +34,7 @@ The NFLSimulatoR package will be available on CRAN and the latest developmental 
 
 # Statement of Need
 
-To date, there is no systematic or formulaic standard for simulating drives and
+To date, there is no systematic or codified standard for simulating drives and
 evaluating strategies using the publicly available NFL play-by-play data. This 
 package aims to fill that need. Specifically, we provide a unified approach to 
 strategy evaluation along with auxilliary functions in order to facilitate this
