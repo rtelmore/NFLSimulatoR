@@ -10,8 +10,8 @@ on:
       - main
       - master
     paths-ignore:
-      - *.md
-      - *.Rmd
+      -*.md
+      -*.Rmd
   pull_request:
     branches:
       - main
