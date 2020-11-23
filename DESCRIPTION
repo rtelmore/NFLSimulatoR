@@ -1,6 +1,6 @@
 Package: NFLSimulatoR
 Type: Package
-Title: An R Package for Simulating Plays and Drives in the NFL
+Title: Simulating Plays and Drives in the NFL
 Version: 0.1.0
 Authors@R: c(
     person("Ryan", "Elmore", email = "Ryan.Elmore@du.edu", role = c("cre", "aut"), comment = c(ORCID = "0000-0002-0092-4532")),
@@ -8,9 +8,12 @@ Authors@R: c(
     person("Will", "Palmquist", email = "Will.Palmquist@du.edu", role = "aut", comment = c(ORCID = "0000-0002-6100-0923")))
 Maintainer: Ryan Elmore <Ryan.Elmore@du.edu>
 Description: The intent here is to enable the simulation of plays/drives and
-    evaluate game-play strategies in the National Football League (NFL). 
-    The package itself is inspired by a blog post by Mike Lopez, currently the 
-    Director of Data and Analytics at the NFL.
+    evaluate game-play strategies in the National Football League (NFL).
+    Built-in strategies include going for it on fourth down and varying the 
+    proportion of passing/rushing plays during a drive. The user should be
+    familiar with nflscrapR data before trying to write his/her own 
+    strategies. This work is inspired by a blog post by Mike Lopez, 
+    currently the  Director of Data and Analytics at the NFL, Lopez (2019) <https://statsbylopez.netlify.app/post/resampling-nfl-drives/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
