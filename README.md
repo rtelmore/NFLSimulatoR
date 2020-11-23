@@ -1,5 +1,5 @@
 # NFLSimulatoR 
-An R Package for simulating plays and drives in the NFL.
+Simulating plays and drives in the NFL using [nflscrapR data](https://ryurko.github.io/nflscrapR-data/).
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -18,9 +18,9 @@ The intent of NFLSimulatoR (version 0.1.0) is to enable the simulation of plays/
 ### Getting Started
 
 If you are just getting started with NFLSimulatoR, we recommend reading an 
-upcoming paper related to use cases 
+upcoming paper related to use cases.
 
 ### Resources
 
-* [Open an issue](https://github.com/rtelmore/NFLSimulatoR/issues/) (GitHub issues for bug reports, feature requests)
+* [Open an issue](https://github.com/rtelmore/NFLSimulatoR/issues/) (GitHub issues for bug reports, feature requests, etc.)
 
