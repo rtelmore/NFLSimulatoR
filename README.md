@@ -3,7 +3,7 @@ Simulating plays and drives in the NFL using [nflscrapR data](https://ryurko.git
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/NFLSimulator)](https://cran.r-project.org/package=NFLSimulatoR)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/NFLSimulatoR)](https://cran.r-project.org/package=NFLSimulatoR)
 [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/NFLSimulatoR)](https://www.r-pkg.org/pkg/NFLSimulatoR)
 [![R build status](https://github.com/rtelmore/NFLSimulatoR/workflows/R-CMD-check/badge.svg)](https://github.com/rtelmore/NFLSimulatoR/actions/)
 
