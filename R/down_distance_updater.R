@@ -33,14 +33,14 @@ down_distance_updater <- function(what_down,
   if (yards_from_own_goal <= 5){yards_from_own_goal <- 5}
   if (yards_from_own_goal > 90){yards_to_go = 100 - yards_from_own_goal}
   if (yards_to_go >= 20){yards_to_go <- 20}
-
+  
   play_success <- FALSE
   while(play_success == FALSE){
     play <- NFLSimulatoR::sample_play(what_down,
-                yards_to_go,
-                yards_from_own_goal,
-                play_by_play_data = play_by_play_data,
-                ...)
+                                      yards_to_go,
+                                      yards_from_own_goal,
+                                      play_by_play_data = play_by_play_data,
+                                      ...)
     if(any(is.na(play$desc), identical(play$desc, character(0)))){
       play_success <- FALSE
       yards_from_own_goal <- min(99, yards_from_own_goal + 
@@ -52,11 +52,9 @@ down_distance_updater <- function(what_down,
   next_play_no_play <- FALSE
   if (play$play_type == "no_play") {
     while (!next_play_no_play) {
-      pb <- dt[game_id== play$game_id]$play_id 
+      pb <- play_by_play_data[game_id== play$game_id]$play_id
       place <- match(play$play_id,pb)
-      print("place")
-      print(place)
-      tmp <- dt[game_id == play$game_id, ][place + 1, ] 
+      tmp <- play_by_play_data[game_id == play$game_id, ][place + 1, ] 
       play <- tmp
       if (play$play_type != "no_play") {
         next_play_no_play <- TRUE
@@ -64,13 +62,13 @@ down_distance_updater <- function(what_down,
     }
     ## Update yfog, ydl, etc.
     yards_from_own_goal <- play$yardline_100
-    yards_to_go <- ydstogo
-    what_down <- down
+    yards_to_go <- play$ydstogo
+    what_down <- play$down
   }
   
   yard_line <- play$yardline_100
   yards_gained <- play$yards_gained
-
+  
   if(play$punt_attempt != 0 & !is.na(play$punt_attempt)){
     if(play$punt_blocked == 1){
       new_yfog <- yards_from_own_goal
@@ -86,7 +84,7 @@ down_distance_updater <- function(what_down,
   } else{
     new_yfog <- min(99, yards_from_own_goal + yards_gained)
   }
-
+  
   new_distance <- ifelse(yards_gained >= yards_to_go & new_yfog <= 90,
                          10,
                          ifelse(yards_gained >= yards_to_go & new_yfog > 90,
@@ -132,4 +130,3 @@ down_distance_updater <- function(what_down,
     )
   )
 }
-
