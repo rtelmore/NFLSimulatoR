@@ -1,9 +1,9 @@
 #' Download raw nflscrapR data in csv format 
 #'
 #' This function will return a data.frame after downloading the original file 
-#' the nflscrapR-data website.
+#' from the nflscrapR-data website.
 #'
-#' @param year A year between 2009 and 2019
+#' @param year A year from 2009 to 2019
 #' @param type A character string specifying "regular", "pre", or "post", for 
 #' regular, pre, or post season, respectively.
 #' 

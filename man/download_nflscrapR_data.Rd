@@ -10,14 +10,14 @@ download_nflscrapR_data(type = "regular", year)
 \item{type}{A character string specifying "regular", "pre", or "post", for 
 regular, pre, or post season, respectively.}
 
-\item{year}{A year between 2009 and 2019}
+\item{year}{A year from 2009 to 2019}
 }
 \value{
 A data.frame containing play-by-play information from NFL games
 }
 \description{
 This function will return a data.frame after downloading the original file 
-the nflscrapR-data website.
+from the nflscrapR-data website.
 }
 \examples{
 \dontrun{
