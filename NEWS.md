@@ -1,3 +1,7 @@
+# NFLSimulatoR 0.2.0
+
+* Support for downloading data from nflfastR data site (Dec 1, 2020)
+
 # NFLSimulatoR 0.1.0
 
 * Website is up and running (Nov 23, 2020)
