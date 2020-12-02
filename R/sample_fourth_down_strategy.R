@@ -14,8 +14,8 @@
 #' @param window_yards_from_own_goal Precision parameter for "yards_from_own_goal" (a value of 1 means the sampling
 #' will occur within plus or minus 1 of the "yards_from_own_goal" value)
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
-#' @param strat The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`
-#' @param yards_less_than Parameter for `yds_less_than` strategy. If using `yds_less_than strategy` and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down
+#' @param fourth_down_strategy The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`
+#' @param yards_less_than Parameter for `yds_less_than` strategy. If using `yds_less_than` strategy and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down
 #'
 #' @return A tibble containing lots of info
 #'
@@ -29,7 +29,7 @@
 #'                       yards_from_own_goal = 45,
 #'                       window_yards_from_own_goal = 2,
 #'                       play_by_play_data = reg_pbp_2018,
-#'                       strat = "empirical")
+#'                       fourth_down_strategy = "empirical")
 #' }
 
 sample_fourth_down_strategy <- function(what_down,
@@ -37,13 +37,13 @@ sample_fourth_down_strategy <- function(what_down,
                                         yards_from_own_goal,
                                         window_yards_from_own_goal = 1,
                                         play_by_play_data,
-                                        strat = "empirical",
+                                        fourth_down_strategy = "empirical",
                                         yards_less_than = 5) {
   
   ## Non-standard eval initialization for data.table
   yfog <- play_type <- down <- ydstogo <- NULL
   
-  if (strat == "empirical") {
+  if (fourth_down_strategy == "empirical") {
     play <- play_by_play_data[!is.na(yfog) &
                                 !play_type %in% c("NA",
                                                   "no_play",
@@ -84,7 +84,7 @@ sample_fourth_down_strategy <- function(what_down,
   }
   # Always go for it
   #sample a play, if it is 4th down, we always go for it
-  if (strat == "always_go_for_it") {
+  if (fourth_down_strategy == "always_go_for_it") {
     if(what_down==1){
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
@@ -144,7 +144,7 @@ sample_fourth_down_strategy <- function(what_down,
   
   #Never go for it
   #sample a play, if it is 4th down, we never go for it
-  if (strat == "never_go_for_it") {
+  if (fourth_down_strategy == "never_go_for_it") {
     if(what_down==1){
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
@@ -212,7 +212,7 @@ sample_fourth_down_strategy <- function(what_down,
     }
   }
   
-  if (strat == "yds_less_than") {
+  if (fourth_down_strategy == "yds_less_than") {
     if(what_down==1){
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
@@ -281,7 +281,7 @@ sample_fourth_down_strategy <- function(what_down,
       }
     }
   }
-  if(strat == "exp_pts"){
+  if(fourth_down_strategy == "exp_pts"){
     if(what_down==1){
       play <- play_by_play_data[!is.na(yfog) &
                                   (down == what_down | what_down - 1) &
@@ -298,13 +298,13 @@ sample_fourth_down_strategy <- function(what_down,
                                                   (yards_from_own_goal + window_yards_from_own_goal)),][sample(1:(.N), size = 1),]
         
       }
-      # print(nrow(play))
+
     }
     if(what_down == 4){
       dec <- expected_pts_fourth(yards_from_goal = (100 - yards_from_own_goal),
                                  yards_to_go = yards_to_go,
                                  play_data = play_by_play_data)
-      best_dec <- names(dec)[apply(dec,1,which.max)]
+      best_dec <- names(dec)[apply(dec, 1, which.max)]
       if(best_dec == "ev_goforit"){
         play <- play_by_play_data[!is.na(yfog) &
                                       play_type %in% c("pass", "run") &

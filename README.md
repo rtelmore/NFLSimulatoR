@@ -24,7 +24,7 @@ upcoming paper related to use cases.
 
 From CRAN (v0.2.0):
 ```r
-install.packages("ballr")
+install.packages("NFLSimulatoR")
 ```
 
 The latest developmental version from GitHub (v0.2.1):
