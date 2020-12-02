@@ -1,3 +1,7 @@
+# NFLSimulatoR 0.2.1
+
+* Bug fix on down_distance_updater.R (Dec 1, 2020)
+
 # NFLSimulatoR 0.2.0
 
 * Support for downloading data from nflfastR data site (Dec 1, 2020)
