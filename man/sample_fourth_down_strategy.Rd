@@ -10,7 +10,7 @@ sample_fourth_down_strategy(
   yards_from_own_goal,
   window_yards_from_own_goal = 1,
   play_by_play_data,
-  strat = "empirical",
+  fourth_down_strategy = "empirical",
   yards_less_than = 5
 )
 }
@@ -26,9 +26,9 @@ will occur within plus or minus 1 of the "yards_from_own_goal" value)}
 
 \item{play_by_play_data}{A data file from nflscrapR prepped using the prep_pbp_data.R function}
 
-\item{strat}{The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`}
+\item{fourth_down_strategy}{The specific fourth down strategy `empirical`, `always_go_for_it`, `never_go_for_it`,`yds_less_than`,`exp_pts`}
 
-\item{yards_less_than}{Parameter for `yds_less_than` strategy. If using `yds_less_than strategy` and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down}
+\item{yards_less_than}{Parameter for `yds_less_than` strategy. If using `yds_less_than` strategy and one is less than `yards_less_than` yards from first down/touchdown, then go for it on fourth down}
 }
 \value{
 A tibble containing lots of info
@@ -49,6 +49,6 @@ sample_fourth_down_strategy(what_down = 3,
                       yards_from_own_goal = 45,
                       window_yards_from_own_goal = 2,
                       play_by_play_data = reg_pbp_2018,
-                      strat = "empirical")
+                      fourth_down_strategy = "empirical")
 }
 }

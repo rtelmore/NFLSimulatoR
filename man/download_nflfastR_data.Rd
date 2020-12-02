@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_nflfastR_data.R
 \name{download_nflfastR_data}
 \alias{download_nflfastR_data}
-\title{Download raw nflscrapR data in csv format}
+\title{Download raw nflfastR data in rds format}
 \usage{
 download_nflfastR_data(year)
 }
