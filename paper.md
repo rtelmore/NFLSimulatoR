@@ -5,13 +5,17 @@ tags:
   - NFL
 authors:
   - name: Ryan Elmore
+    affiliation: 1
     orcid: 0000-0002-0092-4532
   - name: Will Palmquist
+    affiliation: 1
     orcid: 0000-0002-6100-0923
   - name: Ben Williams
+    affiliation: 1
     orcid: 0000-0001-8474-5066
 affiliations:
  - name: Department of Business Information and Analytics, Daniels College of Business, University of Denver
+   index: 1
 citation_author: Elmore et al.
 date: 10 November 2020
 year: 2020
