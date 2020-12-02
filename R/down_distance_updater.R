@@ -53,9 +53,7 @@ down_distance_updater <- function(what_down,
   if (play$play_type == "no_play") {
     while (!next_play_no_play) {
       pb <- play_by_play_data[game_id== play$game_id]$play_id
-      place <- match(play$play_id,pb)
-      tmp <- play_by_play_data[game_id == play$game_id, ][place + 1, ] 
-      play <- tmp
+      play <- play_by_play_data[game_id == play$game_id, ][match(play$play_id, pb) + 1, ] 
       if (play$play_type != "no_play") {
         next_play_no_play <- TRUE
       }
