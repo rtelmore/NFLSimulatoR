@@ -52,7 +52,7 @@ down_distance_updater <- function(what_down,
   next_play_no_play <- FALSE
   if (play$play_type == "no_play") {
     while (!next_play_no_play) {
-      pb <- play_by_play_data[game_id== play$game_id]$play_id
+      pb <- play_by_play_data[game_id == play$game_id]$play_id
       play <- play_by_play_data[game_id == play$game_id, ][match(play$play_id, pb) + 1, ] 
       if (play$play_type != "no_play") {
         next_play_no_play <- TRUE
@@ -101,7 +101,7 @@ down_distance_updater <- function(what_down,
   } else if(play$is_field_goal == 1){
     points <- 3
   } else {points <- 0}
-  #if(!is.td.offense & !is.field_goal){points <- 0}
+
   return(
     data.frame(
       down_original = what_down,

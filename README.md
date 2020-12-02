@@ -1,5 +1,5 @@
 # NFLSimulatoR 
-Simulating plays and drives in the NFL using [nflscrapR data](https://ryurko.github.io/nflscrapR-data/).
+Simulating plays and drives in the NFL using [nflscrapR](https://ryurko.github.io/nflscrapR-data/) or [nflfastR](https://github.com/guga31bb/nflfastR-data) data.
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -19,6 +19,19 @@ The intent of NFLSimulatoR (version 0.1.0) is to enable the simulation of plays/
 
 If you are just getting started with NFLSimulatoR, we recommend reading an 
 upcoming paper related to use cases.
+
+### Installation Instructions
+
+From CRAN (v0.2.0):
+```r
+install.packages("ballr")
+```
+
+The latest developmental version from GitHub (v0.2.1):
+```r
+install.packages("remotes")
+remotes::install_github("rtelmore/NFLSimulatoR")
+```
 
 ### Resources
 
