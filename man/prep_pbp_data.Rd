@@ -4,10 +4,10 @@
 \alias{prep_pbp_data}
 \title{Add necessary columns to nflscrapR data}
 \usage{
-prep_pbp_data(nflscrapR_data)
+prep_pbp_data(data)
 }
 \arguments{
-\item{nflscrapR_data}{An nflscrapR data set. Note that stringsAsFactors = FALSE is assumed.}
+\item{data}{An nflscrapR or nflfastR data set. Note that stringsAsFactors = FALSE is assumed.}
 }
 \value{
 a data.table object

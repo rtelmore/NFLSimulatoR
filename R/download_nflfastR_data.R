@@ -19,4 +19,5 @@ download_nflfastR_data <- function(year){
                        ".rds",
                        sep = "")
   df <- readRDS(url(web_address))
+  return(df)
 }

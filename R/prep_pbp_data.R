@@ -1,6 +1,6 @@
 #' Add necessary columns to nflscrapR data
 #'
-#' @param nflscrapR_data An nflscrapR data set. Note that stringsAsFactors = FALSE is assumed.
+#' @param data An nflscrapR or nflfastR data set. Note that stringsAsFactors = FALSE is assumed.
 #'
 #' @return a data.table object
 #' @import data.table
@@ -10,15 +10,15 @@
 #' \dontrun{
 #' dt <- prep_pbp_data(nflscrapr_pbp_data)
 #' }
-prep_pbp_data <- function(nflscrapR_data){
+prep_pbp_data <- function(data){
   
   ## Non-standard eval initialization for data.table
-  total_home_score <- total_away_score <- desc <- fumble_recovery_1_team <- NULL
+  game_id <- total_home_score <- total_away_score <- desc <- fumble_recovery_1_team <- NULL
   rush_touchdown <- pass_touchdown <- field_goal_attempt <- field_goal_result <- NULL
   yardline_100 <- punt_attempt <- is_fumble <- posteam <- yards_gained <- is_two_point <- NULL
 
   
-  dt <- data.table::setDT(nflscrapR_data)[
+  dt <- data.table::setDT(data)[
     , ":="
     (p_diff = total_home_score - total_away_score,
       is_two_point = grepl("TWO-POINT CONVERSION", desc),
@@ -33,5 +33,6 @@ prep_pbp_data <- function(nflscrapR_data){
                     !is.na(yards_gained)][
                       is_two_point == FALSE][
                         !is.na(punt_attempt)]
+  dt[, c("next_play_id") := shift(.SD, 1), by = game_id]
   return(dt)
 }

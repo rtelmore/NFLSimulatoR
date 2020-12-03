@@ -27,7 +27,7 @@ down_distance_updater <- function(what_down,
                                   play_by_play_data,
                                   ...){
   
-  game_id <- play_id <- ydstogo <- down <- NULL
+  game_id <- next_play_id <- NULL
   
   # down_original <- what_down
   if (yards_from_own_goal <= 5){yards_from_own_goal <- 5}
@@ -52,8 +52,10 @@ down_distance_updater <- function(what_down,
   next_play_no_play <- FALSE
   if (play$play_type == "no_play") {
     while (!next_play_no_play) {
-      pb <- play_by_play_data[game_id == play$game_id]$play_id
-      play <- play_by_play_data[game_id == play$game_id, ][match(play$play_id, pb) + 1, ] 
+      # Get next play (up to five plays)
+      gid <- play$game_id
+      pid <- play$play_id
+      play <- play_by_play_data[game_id == gid, ][next_play_id == pid, ]
       if (play$play_type != "no_play") {
         next_play_no_play <- TRUE
       }
