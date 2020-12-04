@@ -68,6 +68,7 @@ down_distance_updater <- function(what_down,
       new_yfog <- yards_from_own_goal
     } else if(!is.na(play$touchback) & (play$touchback != 0)){
       new_yfog <- 75
+    } else{
       if(is.na(play$kick_distance)){
         new_yfog <- 75
       } else {
@@ -76,8 +77,7 @@ down_distance_updater <- function(what_down,
     }
   } else{
     new_yfog <- min(99, yards_from_own_goal + yards_gained)
-  }
-  
+  }  
   new_distance <- ifelse(yards_gained >= yards_to_go & new_yfog <= 90,
                              10,
                              ifelse(yards_gained >= yards_to_go & new_yfog > 90,
