@@ -34,5 +34,6 @@ prep_pbp_data <- function(data){
                       is_two_point == FALSE][
                         !is.na(punt_attempt)]
   dt[, c("next_play_id") := shift(.SD, 1), by = game_id]
+  dt[down != "NA"]
   return(dt)
 }
