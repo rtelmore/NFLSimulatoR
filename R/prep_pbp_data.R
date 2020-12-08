@@ -14,7 +14,7 @@ prep_pbp_data <- function(data){
   
   ## Non-standard eval initialization for data.table
   game_id <- total_home_score <- total_away_score <- desc <- fumble_recovery_1_team <- NULL
-  rush_touchdown <- pass_touchdown <- field_goal_attempt <- field_goal_result <- NULL
+  rush_touchdown <- pass_touchdown <- field_goal_attempt <- field_goal_result <- down <- NULL
   yardline_100 <- punt_attempt <- is_fumble <- posteam <- yards_gained <- is_two_point <- NULL
 
   

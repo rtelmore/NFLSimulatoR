@@ -1,6 +1,7 @@
 ## New minor version 0.2.1
 
 * Bug fixed on down_distance_updater.R
+* Update prep_pbp_data.R function by defining NULLs
 
 ## Test environments
 * local OS X install, R 4.0.3 
