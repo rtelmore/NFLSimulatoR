@@ -1,0 +1,127 @@
+---
+title: "Basic Functionality in NFLSimulator"
+author: "Will Palmquist"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Basic Functionality in NFLSimulator}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message = F, warning = F}
+library(NFLSimulatoR)
+library(knitr)
+set.seed(584)
+```
+
+## Introduction
+
+The `NFLSimulatoR` package provides an array of functions to enable the simulation of plays/drives and evaluate game-play strategies in the National Football League (NFL). This vignette demonstrates the basics of using the package. 
+
+## Downloading and Prepping the Data
+
+The package provides functions for downloading play-by-play data from both 
+[`nflscrapR`](https://ryurko.github.io/nflscrapR-data/) and [`nflfastR`](https://github.com/guga31bb/nflfastR-data) by year. The `prep_pbp_data()` function will then clean and prepare the data for use in the sampling functions that are included in `NFLSimulatoR`.
+
+```{r}
+pbp_data <- NFLSimulatoR::download_nflscrapR_data(year = 2019)
+pbp_data <- NFLSimulatoR::prep_pbp_data(pbp_data)
+```
+
+Alternatively, you can do the same using the `nflfastR` data repository.
+
+```{r, eval = FALSE}
+pbp_data <- NFLSimulatoR::download_nflfastR_data(year = 2019)
+pbp_data <- NFLSimulatoR::prep_pbp_data(pbp_data)
+```
+
+## Basic Sample Play
+
+The `NFLSimulatoR::sample_play()` function is the basic building block for contructing hypothethical drives and/or evaluating strategies. The function simply returns a random play from the play-by-play data for a given down, distance, and yards from the team's goal, using the usual NFL-coaching strategy.
+
+```{r}
+play <- NFLSimulatoR::sample_play(
+  what_down = 3,
+  yards_to_go = 2,
+  yards_from_own_goal = 45,
+  play_by_play_data = pbp_data,
+  strategy = "normal"
+)
+knitr::kable(play[, c("desc",
+                      "down",
+                      "ydstogo",
+                      "yardline_100",
+                      "play_type",
+                      "yards_gained")])
+```
+
+As you can see in this example, Kirk Cousins threw a touchdown pass to Stefon Diggs on third down and two from the Minnesota 46 yard line. Note that we were sampling from the MN 45 yard line in the function call, however, we include a window argument (`window_yards_from_own_goal`) in the `sample_play()` function with a default set to one yard.
+
+## Sample Play Specified Pass/Rush Blend
+
+We can also sample plays according to a given pass/rush play strategy. The user may choose a value for the proportion of passing plays to be sampled. Thus one can test strategies in which the team always passes, always runs, or some distribution of the two. This strategy is only intended for downs 1 - 3, and uses an empirical strategy for fourth downs.
+
+```{r}
+play <- NFLSimulatoR::sample_play(
+  what_down = 3,
+  yards_to_go = 2,
+  yards_from_own_goal = 45,
+  play_by_play_data = pbp_data,
+  strategy = "passes_rushes",
+  prop_passes = 0.5
+)
+knitr::kable(play[, c("desc",
+                      "down",
+                      "ydstogo",
+                      "yardline_100",
+                      "play_type",
+                      "yards_gained")])
+```
+
+## Sample Play Fourth Down Strategies
+
+This package also offers a way to sample various fourth down strategies. The user may choose from the following: empirical, always going for it on fourth down, never going for it on fourth down, go for it if one is less than a certain distance from a first down/touchdown, and go for it if it maximizes one's expected points.The specific fourth down strategy is passed in to the `fourth_down_strategy` argument. The `yds_less_than` strategy takes an additional argument for the distance to from a first down parameter. 
+
+```{r}
+play <- sample_play(
+  what_down = 4,
+  yards_to_go = 2,
+  yards_from_own_goal = 45,
+  play_by_play_data = pbp_data,
+  strategy = "fourth_downs",
+  fourth_down_strategy = "yds_less_than",
+  yards_less_than = 5
+)
+knitr::kable(play[, c("desc",
+                      "down",
+                      "ydstogo",
+                      "yardline_100",
+                      "play_type",
+                      "yards_gained")])
+```
+
+## Sample Drives Function
+
+Now, we can utilize the above sample play functions to simulate full drives using the `sample_drives_until_score()` function. The strategy options are the same as `sample_play()` with varying parameters based on the chosen strategy. The function also offers the option to simulate one single possession or until one team scores.
+
+```{r}
+drives <- NFLSimulatoR::sample_drives_until_score(
+  n_sims = 10,
+  from_yard_line = 25,
+  play_by_play_data = pbp_data,
+  strategy = "fourth_downs",
+  fourth_down_strategy = "empirical",
+  single_drive = T,
+  progress = F #shows progress bar for simulations
+)
+drives$points
+```
+
+
