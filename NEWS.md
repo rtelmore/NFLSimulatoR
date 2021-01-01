@@ -1,6 +1,7 @@
 # NFLSimulatoR 0.2.1
 
-* Bug fix on down_distance_updater.R (Dec 2, 2020)
+* Bug fix on down_distance_updater.R (Dec 8, 2020)
+* Update prep_pbp_data.R function by defining NULLs (Dec 8, 2020)
 
 # NFLSimulatoR 0.2
 
