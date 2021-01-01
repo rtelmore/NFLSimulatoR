@@ -1,10 +1,10 @@
-#' Sample a Series of Drives Until a Score, a strategy to test verses the normal strategy
+#' Sample a Series of Drives, a strategy to test verses the normal strategy
 #'
 #' @param n_sims The number of simulations
 #' @param from_yard_line The starting field position (defaults to 25)
 #' @param play_by_play_data A data file from nflscrapR prepped using the prep_pbp_data.R function
 #' @param strategy "normal", "passes_rushes", or "fourth_downs"
-#' @param single_drive TRUE indicates only a single drive
+#' @param single_drive TRUE indicates only a single drive, otherwise, drives sampled until a score occurs
 #' @param progress logical for inclusion of a progress bar
 #' @param ... Additional arguments for different strategies
 #' 
@@ -13,10 +13,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' sample_drives_until_score(2, 25, dt)
+#' sample_drives(2, 25, dt)
 #' }
 #'
-sample_drives_until_score <- function(n_sims,
+sample_drives <- function(n_sims,
                                       from_yard_line = 25,
                                       play_by_play_data,
                                       strategy = "normal",
