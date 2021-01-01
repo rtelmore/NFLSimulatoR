@@ -109,10 +109,10 @@ knitr::kable(play[, c("desc",
 
 ## Sample Drives Function
 
-Now, we can utilize the above sample play functions to simulate full drives using the `sample_drives_until_score()` function. The strategy options are the same as `sample_play()` with varying parameters based on the chosen strategy. The function also offers the option to simulate one single possession or until one team scores.
+Now, we can utilize the above sample play functions to simulate full drives using the `sample_drives()` function. The strategy options are the same as `sample_play()` with varying parameters based on the chosen strategy. The function also offers the option to simulate one single possession or until one team scores.
 
 ```{r}
-drives <- NFLSimulatoR::sample_drives_until_score(
+drives <- NFLSimulatoR::sample_drives(
   n_sims = 10,
   from_yard_line = 25,
   play_by_play_data = pbp_data,
