@@ -1,3 +1,17 @@
+## New minor version 0.3.0
+
+* Rename sample_drives_until_score to sample_drives
+
+## Test environments
+* local OS X install, R 4.0.3 
+* Mac OS X (on github), R 4.0.3
+* Windows (on github), R 4.0.3
+* Ubuntu (on github), R 4.0.3
+* Ubuntu (on github), R devel
+
+## R CMD check results
+There were no ERRORs, WARNINGs, or NOTEs
+
 ## New minor version 0.2.1
 
 * Bug fixed on down_distance_updater.R

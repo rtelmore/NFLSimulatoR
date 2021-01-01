@@ -1,3 +1,7 @@
+# NFLSimulatoR 0.3.0
+
+* Rename sample_drives_until_score to sample_drives
+
 # NFLSimulatoR 0.2.1
 
 * Bug fix on down_distance_updater.R (Dec 8, 2020)

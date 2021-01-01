@@ -5,6 +5,7 @@ on:
     paths-ignore:
     - '*.md'
     - '*.Rmd'
+    - '.github/workflows/R-CMD-check.yaml'
     branches:
       - main
       - master

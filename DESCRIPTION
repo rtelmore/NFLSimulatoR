@@ -1,7 +1,7 @@
 Package: NFLSimulatoR
 Type: Package
 Title: Simulating Plays and Drives in the NFL
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: c(
     person("Ryan", "Elmore", email = "Ryan.Elmore@du.edu", role = c("cre", "aut"), comment = c(ORCID = "0000-0002-0092-4532")),
     person("Ben", "Williams", email = "Benjamin.Williams@du.edu", role = "aut", comment = c(ORCID = "0000-0001-8474-5066")),
