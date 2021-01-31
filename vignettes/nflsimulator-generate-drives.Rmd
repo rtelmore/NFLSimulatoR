@@ -99,7 +99,7 @@ We can also compare various fourth down strategies using the `sample_drives()` f
 
 ### Downloading and filtering data based on team Passer Rating (RTG)
 
-To further analyze passing vs. rushing we can run the simulations based on a team's ability to pass the football. This is accomplished by dividing the play-by-play data into groups three groups (low, mid, high) based on a team's respective Passer Rating (RTG) relative to the league average over the last three seasons (2017-2019). This file can be downloaded from (Google Drive here)[https://docs.google.com/spreadsheets/d/e/2PACX-1vTnIR3R1xSdZn3OcnRgrpOhMvT535AulwxbaVA2-BlADb37g1kaP_kQY181cCl6V8EB64ubwLFxHFgT/pubhtml]\footnote{http://bit.ly/nflsimulator-data}. The six datasets, three for 2018 and 2019 respectively, are stored in the list object `RTG_list`. 
+To further analyze passing vs. rushing we can run the simulations based on a team's ability to pass the football. This is accomplished by dividing the play-by-play data into groups three groups (low, mid, high) based on a team's respective Passer Rating (RTG) relative to the league average over the last three seasons (2017-2019). This file can be downloaded from [Google Drive here](https://docs.google.com/spreadsheets/d/e/2PACX-1vTnIR3R1xSdZn3OcnRgrpOhMvT535AulwxbaVA2-BlADb37g1kaP_kQY181cCl6V8EB64ubwLFxHFgT/pubhtml). The six datasets, three for 2018 and 2019 respectively, are stored in the list object `RTG_list`. 
 
 ```{r, eval = FALSE}
 # RTG Data
