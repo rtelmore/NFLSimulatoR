@@ -104,7 +104,7 @@ To further analyze passing vs. rushing we can run the simulations based on a tea
 ```{r, eval = FALSE}
 # RTG Data
 # Team RTG read in (2017-2019)
-RTG <- read.csv("Will/NFLScenarios/Strats_Drives_Testing/Team_Passing_Offense.csv")
+RTG <- read.csv("path/to/file/given/above/Team_Passing_Offense.csv")
 
 #Store Tercile Cutoffs (2017-2019)
 
