@@ -22,12 +22,12 @@ upcoming paper related to use cases.
 
 ### Installation Instructions
 
-From CRAN (v0.2.1):
+From CRAN (v0.3.0):
 ```r
 install.packages("NFLSimulatoR")
 ```
 
-The latest developmental version from GitHub (v0.3.0):
+The latest developmental version from GitHub (v0.3.1):
 ```r
 install.packages("remotes")
 remotes::install_github("rtelmore/NFLSimulatoR")
