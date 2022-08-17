@@ -28,8 +28,8 @@ The play-by-play data used for the strategy simulations comes from [`nflscrapR`]
 
 ```{r, eval=FALSE}
 df <- dplyr::bind_cols(
-  download_nflscrapR_data(year = 2018),
-  download_nflscrapR_data(year = 2019))
+  nflfastR::load_pbp(2018),
+  nflfastR::load_pbp(2019))
   
 pbp_data <- df %>% 
   prep_pbp_data(.) %>%

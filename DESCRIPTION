@@ -1,7 +1,7 @@
 Package: NFLSimulatoR
 Type: Package
 Title: Simulating Plays and Drives in the NFL
-Version: 0.3.1
+Version: 0.4.0
 Authors@R: c(
     person("Ryan", "Elmore", email = "Ryan.Elmore@du.edu", role = c("cre", "aut"), comment = c(ORCID = "0000-0002-0092-4532")),
     person("Ben", "Williams", email = "Benjamin.Williams@du.edu", role = "aut", comment = c(ORCID = "0000-0001-8474-5066")),
@@ -18,11 +18,12 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
     data.table,
-    progress
+    progress, 
+    nflfastR
 LazyData: true
 Depends: 
     R (>= 3.5.0)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 URL: https://github.com/rtelmore/NFLSimulatoR/
 BugReports: https://github.com/rtelmore/NFLSimulatoR/issues/
 Suggests: 

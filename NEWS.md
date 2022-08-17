@@ -1,3 +1,8 @@
+# NFLSimulatoR 0.4.0
+
+* Deprecated the download_nflfastR_data() and download_nflscrapR_data() functions
+* Using the nflfastR::load_pbp() function instead
+
 # NFLSimulatoR 0.3.0
 
 * Rename sample_drives_until_score to sample_drives

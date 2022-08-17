@@ -28,17 +28,17 @@ The `NFLSimulatoR` package provides an array of functions to enable the simulati
 ## Downloading and Prepping the Data
 
 The package provides functions for downloading play-by-play data from both 
-[`nflscrapR`](https://ryurko.github.io/nflscrapR-data/) and [`nflfastR`](https://github.com/guga31bb/nflfastR-data) by year. The `prep_pbp_data()` function will then clean and prepare the data for use in the sampling functions that are included in `NFLSimulatoR`.
+[`nflscrapR`](https://ryurko.github.io/nflscrapR-data/) and [`nflfastR`](https://www.nflfastr.com/index.html) by year. The `prep_pbp_data()` function will then clean and prepare the data for use in the sampling functions that are included in `NFLSimulatoR`.
 
-```{r}
-pbp_data <- NFLSimulatoR::download_nflscrapR_data(year = 2019)
+```{r, message = FALSE, warning = FALSE}
+pbp_data <- nflfastR::load_pbp(2019)
 pbp_data <- NFLSimulatoR::prep_pbp_data(pbp_data)
 ```
 
 Alternatively, you can do the same using the `nflfastR` data repository.
 
 ```{r, eval = FALSE}
-pbp_data <- NFLSimulatoR::download_nflfastR_data(year = 2019)
+pbp_data <- nflfastR::load_pbp(2019)
 pbp_data <- NFLSimulatoR::prep_pbp_data(pbp_data)
 ```
 
