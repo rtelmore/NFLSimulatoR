@@ -1,3 +1,17 @@
+## New version 0.4.0
+
+* Removed the package download data functions
+
+## Test environments
+* local OS X install, R 4.1.3 
+* Mac OS X (on github), R 4.2.1
+* Windows (on github), R 4.2.1
+* Ubuntu (on github), R 4.2.1
+* Ubuntu (on github), R devel
+
+## R CMD check results
+There were no ERRORs, WARNINGs, or NOTEs
+
 ## New very minor version 0.3.1
 
 * Add another vignette
