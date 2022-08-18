@@ -13,3 +13,4 @@
 ^paper\.*
 ^tmp$
 %README\.md$
+^CRAN-SUBMISSION$
